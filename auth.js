@@ -27,7 +27,9 @@ const handleRegistration = (event) => {
                 body: JSON.stringify(info),
             })
             .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((data) =>{console.log(data)
+              window.location.href = "login.html";
+            } );
         } else {
            
             document.getElementById("error").innerText =
