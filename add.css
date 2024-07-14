@@ -1,0 +1,47 @@
+.add-container{
+    background-image: url("img/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    display: flex;
+    align-items: center;
+}
+.add_text{
+    width: 1100px;
+    margin: 0 auto;
+}
+.add_back{
+    margin-left: 80%;
+}
+.all_course{
+    margin-top: 50px;
+}
+.detail-container{
+    width: 1100px;
+    margin: 100px auto 0;
+    border: 1px solid #685F78;
+    border-radius: 5px;
+    padding: 30px;
+}
+.all{
+    display: flex;
+}
+.all img{
+    width: 100%;
+     height: auto;
+    border-radius: 15px;
+}
+.all_details{
+    margin-left: 50px;
+    
+}
+#department{
+    border: 2px solid #B4A7F5;
+    border-radius: 5px;
+    min-height: 50px;
+    padding: 6px 15px;
+    width: 100%;
+    font-weight: 500;
+    outline: none;
+    color: #685F78;
+}
