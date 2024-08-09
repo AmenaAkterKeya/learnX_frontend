@@ -58,19 +58,27 @@ const getCourseDetail = async () => {
     const courseDetailHTML = `
       <div class="all">
         <div class="col-md-6">
+        <h2 class="card-title" style="
+    margin-bottom: 30px;
+">${course.title}</h2>
           <img src="${course.image}" class="card-img-top" alt="${course.title}">
         </div>
         <div class="col-md-6" style="align-content: center;">
           <div class="all_details">
             <div class="card-body">
-              <h5 class="card-title">${course.title}</h5>
-              <h6 class="card-subtitle">${instructorName}</h6>
-              <p class="card-text">${course.content}</p>
-              <p class="card-text"><strong style="color: #685F78; letter-spacing: 1px;">Department:</strong> ${departmentNames.map(name => `<span class="card_de">${name}</span>`).join(' ')}</p>
+              
+              <h6 class="card-subtitle"><span style="
+    color: #685F78;margin-right: 4px;
+">Instructor: </span> <span>${instructorName} </span></h6>
+              <p class="card-text" style="
+    font-size: 19px;
+">${course.content}</p>
+              <p class="card-text"><strong style="color: #685F78;margin-right: 5px; letter-spacing: 1px;">Department:</strong> ${departmentNames.map(name => `<span class="card_de">${name}</span>`).join(' ')}</p>
               <div class="d-flex justify-content-between">
-                <p>Lessons: ${course.lesson} <i class="fa-regular fa-clock"></i></p>
-                <p>Fee: $${course.fee}</p> 
+                                <p>Lessons:  <span style="color:#f66962">${course.lesson} </span><i class="fa-regular fa-clock"></i></p>
+                                <p>Fee: <span style="color:#f66962">$${course.fee}</span></p>
               </div>
+              <a href="./course_detail.html?id=${course.id}" class="btn" style="background-color: #f66962; color: white;">Enroll</a>
             </div>
           </div>
         </div>

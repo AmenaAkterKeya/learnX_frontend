@@ -75,7 +75,7 @@ const getAllCourses = (departmentName = '') => {
                                 <p>Lessons:  <span style="color:#f66962">${course.lesson} </span><i class="fa-regular fa-clock"></i></p>
                                 <p>Fee: <span style="color:#f66962">$${course.fee}</span></p>
                             </div>
-                            <a href="./course_detail.html?id=${course.id}" class="btn" style="background-color: #f66962; color: white;">Learn More</a>
+                            <a href="./index_course_details.html?id=${course.id}" class="btn" style="background-color: #f66962; color: white;">Learn More</a>
                         </div>
                     </div>
                 `;

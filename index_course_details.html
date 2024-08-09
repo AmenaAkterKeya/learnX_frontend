@@ -16,7 +16,7 @@
 <body>
 <!-- navbar start -->
 <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="profile.html">
+    <a class="navbar-brand" href="home.html">
        <p class="logo">Learn<span class="x">X</span></p>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,38 +25,46 @@
     <div class="collapse navbar-collapse full_nav" id="navbarNav">
         <ul class="navbar-nav header_nav gap-3">
             <li class="nav-item ">
-                <a class="nav-link" href="profile.html">Home</a>
+                <a class="nav-link" href="home.html">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="course.html">Courses</a>
+                <a class="nav-link" href="course_home.html">Courses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="addcourse.html">Add course</a>
+                <a class="nav-link" href="about.html">About Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="profile_contact.html">Contact</a>
+                <a class="nav-link" href="contact.html">Contact</a>
             </li>
         </ul>
         <ul class="navbar-nav inout gap-3">
             <li class="nav-item">
-                <a class="nav-link header_sign in_out" href="home.html" onclick="handlelogOut()">Log Out</a>
+                <a class="nav-link header_sign in_out" href="registration.html">Sign Up</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link header_log in_out" href="instructor_course.html">Dashboard</a>
+                <a class="nav-link header_log in_out" href="login.html">Login</a>
             </li>
         </ul>
     </div>
 </nav>
 <!-- navbar end -->
-
 <!-- details start -->
 <div class="detail-container">
-    <div class="row" id="details_course"></div>
+  <div class="row" id="details_course"></div>
+ 
 </div>
-<!-- details end -->
-
+<!-- end-->
 <!-- comment section -->
-<section class="comment_course">
+<section class="comment_course" style="
+margin: 30px;
+margin-left: 170px;
+width: 700px;
+background-color: white;
+padding: 40px;
+border: 1px solid #dddada;
+border-radius: 10px;
+box-shadow: 2px 2px 4px rgb(207, 207, 207);
+">
     <div >
         <h4>Post A Comment</h4>
         <div>
@@ -83,7 +91,6 @@
     </div>
 </section>
 <!-- comment section end -->
-
 <!-- footer start -->
 <div style="
 background-color: white;
@@ -120,12 +127,9 @@ background-color: white;
     </div>
 </section>
 </div>
-
 <!-- footer end -->
-
-<!-- Scripts -->
+<script src="details.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="details.js"></script>
 </body>
 </html>

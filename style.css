@@ -2,6 +2,7 @@ body{
     margin: auto;
     font-family: "Roboto", sans-serif;
   font-size: 16px;
+  background-color: #f5f5f5;
   
 }
 .navbar{
@@ -109,6 +110,7 @@ body{
 }
 .card {
   margin-bottom: 20px; 
+  box-shadow: 2px 2px 4px rgb(207, 207, 207);
 }
 .card-subtitle{
   color: #f66962;
@@ -236,7 +238,29 @@ margin-left: 10px;
 font-size: 18px;
 margin-left: 10px;
 }
+.comment_course{
+  margin: 30px;
+margin-left: 170px;
+width: 700px;
+background-color: white;
+padding: 40px;
+border: 1px solid #dddada;
+border-radius: 10px;
+box-shadow: 2px 2px 4px rgb(207, 207, 207);
+}
+.contact_container{
 
+    width: 850px;
+    background-color: white;
+    padding: 33px;
+    border: 1px solid #dddada;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgb(207, 207, 207);
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
  /* footer */
  .footer {
   width: 1100px;
