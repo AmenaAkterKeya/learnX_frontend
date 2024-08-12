@@ -86,7 +86,7 @@ const getCourseDetail = async () => {
 
 const getCourseComments = async (courseId) => {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/course/courses/${courseId}/comments/`);
+    const response = await fetch(`https://learnx-ldys.onrender.com/course/courses/${courseId}/comments/`);
     if (!response.ok) {
       throw new Error('Failed to fetch comments');
     }
@@ -135,7 +135,7 @@ document.getElementById('Form').addEventListener('submit', async function(e) {
   };
 
   try {
-    const response = await fetch('http://127.0.0.1:8000/course/comment/', {
+    const response = await fetch('https://learnx-ldys.onrender.com/course/comment/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

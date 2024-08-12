@@ -56,11 +56,11 @@ const getQueryParams = (param) => {
   
       const courseDetailHTML = `
         <div class="all">
-          <div class="col-md-6">
+          <div class="col-lg-6 col-md-6 col-sm-12">
           <h2 class="card-title" style="margin-bottom: 30px;">${course.title}</h2>
             <img src="${course.image}" class="card-img-top" alt="${course.title}">
           </div>
-          <div class="col-md-6" style="align-content: center;">
+          <div class="col-lg-6 col-md-6 col-sm-12" style="align-content: center;">
             <div class="all_details">
               <div class="card-body">
                 
@@ -86,7 +86,7 @@ const getQueryParams = (param) => {
   
   const getCourseComments = async (courseId) => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/course/courses/${courseId}/comments/`);
+      const response = await fetch(`https://learnx-ldys.onrender.com/course/courses/${courseId}/comments/`);
       if (!response.ok) {
         throw new Error('Failed to fetch comments');
       }
@@ -135,7 +135,7 @@ const getQueryParams = (param) => {
     };
   
     try {
-      const response = await fetch('http://127.0.0.1:8000/course/comment/', {
+      const response = await fetch('https://learnx-ldys.onrender.com/course/comment/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
