@@ -67,7 +67,6 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh; 
-    display: flex;
     align-items: center;
     
 }
@@ -138,13 +137,14 @@ body{
   margin-bottom: 10px;
 }
 .card-img-top{
-  height: 400px;
+  height: 600px;
 }
 .de{
-  color: #f66962;
+  color: #f5f5f5;
   min-width: 30px;
   min-height:30px;
-  border: 1px solid #f66962;
+  /* border: 1px solid #f66962; */
+  background-color: #f66962;
   padding: 5px;
   border-radius: 3px;
   font-size: 16px;
@@ -187,7 +187,9 @@ body{
 .feature-container{
   width: 1100px;
   margin-top: 100px;
-  margin-left: 245px;
+  margin-left: auto;
+
+  margin-right: auto;
 }
 
 .feature{
@@ -240,12 +242,13 @@ margin-left: 10px;
 }
 .comment_course{
   margin: 30px;
-margin-left: 170px;
-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
 background-color: white;
 padding: 40px;
-border: 1px solid #dddada;
 border-radius: 10px;
+border: 1px solid #dddada;
 box-shadow: 2px 2px 4px rgb(207, 207, 207);
 }
 .contact_container{

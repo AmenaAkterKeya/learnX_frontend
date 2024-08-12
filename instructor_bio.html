@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LearnX</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    
+
+</head>
+<body>
+            <!-- Navbar start -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <p class="logo">Learn<span class="x">X</span></p>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse full_nav" id="navbarNav">
+            <ul class="navbar-nav header_nav gap-3 d-flex justify-content-center">
+                <li class="nav-item ">
+                    <a class="nav-link" href="profile.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="course.html">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="addcourse.html">Add course</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile_contact.html">Contact</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav inout gap-3">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" id="instructor-username" style="background-color: #f66962;border: none;font-size: 18px;">
+                  
+                </button>
+                    <ul class="dropdown-menu" style="
+                    padding: 20px;
+                ">
+                        <li class="nav-item" style="
+                        margin-bottom: 10px;
+                    ">
+                            <a class="nav-link header_log in_out" href="instructor_bio.html">Profile</a>
+                        </li>
+                        
+                        <li class="nav-item" style="
+                        margin-bottom: 10px;
+                    ">
+                            <a class="nav-link header_log in_out" href="instructor_course.html">Dashboard</a>
+                        </li>
+                        <li class="nav-item" style="
+                        margin-bottom: 10px;
+                    ">
+                            <a class="nav-link header_log in_out" href="index.html" onclick="handlelogOut()">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <!-- Navbar end -->
+<div  style="
+width: 1200px;
+margin-left: auto;
+margin-right: auto;
+">
+    <div
+    style="
+    background-color: white;
+    padding: 33px;
+    border: 1px solid #dddada;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgb(207, 207, 207);
+    margin-top: 60px;
+    
+">
+        <h2>Account Details</h2>
+        
+        <div style="
+        margin-top: 25px;
+    "><p style="
+    font-size: 18px;
+">Username</p></div>
+            <div style="
+            background-color: #efefef;
+            border: 1px solid #dddada;
+            border-radius: 4px;
+            color: #767676;
+            padding: 8px;
+            font-size:20px;
+        "><p id="instructor-user" style="
+        margin-left: 10px;
+        margin-top: auto;
+        margin-bottom: auto;
+    "></p></div>
+        
+            <div class="row" style="
+            margin-top: 25px;
+        ">
+                <div class="col-6"><div><p style="
+                    font-size: 18px;
+                ">First Name</p></div>
+                <div style="
+                   cursor: text;
+    background-color: #fffdfd;
+
+                border: 1px solid #dddada;
+                border-radius: 4px;
+                color: #767676;
+                font-size: 20px;
+                text-transform: capitalize;
+                padding: 8px;
+            "><p id="instructor-firstname" style="
+            margin-left: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+        "></p></div></div>
+        <div class="col-6"><div><p style="
+            font-size: 18px;
+        ">Last Name</p></div>
+                <div style="
+                    cursor: text;
+    background-color: #fffdfd;
+
+                border: 1px solid #dddada;
+                border-radius: 4px;
+                color: #767676;
+                font-size: 20px;
+                padding: 8px;
+            "><p id="instructor-lastname" style="
+            margin-left: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+        "></p></div></div>
+            </div>
+            <div style="
+            margin-top: 25px;
+        "><p style="
+        font-size: 18px;
+    ">Email Address</p></div>
+                <div style="
+                background-color: #efefef;
+                border: 1px solid #dddada;
+                border-radius: 4px;
+                color: #767676;
+                font-size: 20px;
+                text-transform: capitalize;
+                padding: 8px;
+            "><p id="instructor-email" style="
+            margin-left: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+        "></p></div>
+            
+        <div style="
+        margin-top: 25px;
+    "><p style="
+    font-size: 18px;
+">Phone No</p></div>
+            <div style="
+                cursor: text;
+    background-color: #fffdfd;
+
+            border: 1px solid #dddada;
+            border-radius: 4px;
+            color: #767676;
+            font-size: 20px;
+            text-transform: capitalize;
+            padding: 8px;
+        "><p id="instructor-mobile" style="
+        margin-left: 10px;
+        margin-top: auto;
+        margin-bottom: auto;
+    "></p></div>
+        
+    </div>
+    
+</div>
+    
+<!-- footer start -->
+<div style="
+background-color: white;
+">
+<section class="footer">
+    <div class="row">
+        <div class="footer-col col-lg-4">
+            <p class="logo">Learn<span class="x">X</span></p>
+            <p style="margin-top: 35px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris</p>
+        </div>
+        <div class="footer-col col-lg-4">
+            <h4 style="margin-left: 30px;">Info</h4>
+            <ul class="links">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Student</a></li>
+                <li><a href="#">Service</a></li>
+                <li><a href="#">Courses</a></li>
+            </ul>
+        </div>
+        <div class="footer-col col-lg-4">
+            <h4>Newsletter</h4>
+            <p>Subscribe to our newsletter for a weekly dose of news, updates, helpful tips, and exclusive offers.</p>
+            <form action="#">
+                <input type="text" placeholder="Your email" required>
+                <button type="submit">SUBSCRIBE</button>
+            </form>
+            <div class="icons">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-github"></i>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+<!-- footer end -->
+    <script src="instructor_bio.js"></script>
+    <script src="auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

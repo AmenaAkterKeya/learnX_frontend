@@ -48,29 +48,40 @@ const getValue = (id) => {
     return value;
 };
 const handleLogin = (event) => {
-    event.preventDefault();
-    const username = getValue("login-username");
-    const password = getValue("login-password");
-    console.log(username, password);
-    if ((username, password)) {
+  event.preventDefault();
+  const username = getValue("login-username");
+  const password = getValue("login-password");
+  console.log(username, password);
+
+  // Hide the error message initially
+  const errorElement = document.getElementById("error");
+  errorElement.style.display = "none";
+
+  if (username && password) {
       fetch("https://learnx-ldys.onrender.com/account/login/", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ username, password }),
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ username, password }),
       })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-  
-          if (data.token && data.user_id) {
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("user_id", data.user_id);
-            window.location.href = "profile.html";
-          }
+          .then((res) => res.json())
+          .then((data) => {
+              console.log(data);
+
+              if (data.token && data.user_id) {
+                  localStorage.setItem("token", data.token);
+                  localStorage.setItem("user_id", data.user_id);
+                  window.location.href = "profile.html";
+              } else {
+                  // Show error message if login fails
+                  errorElement.innerText = "Email not confirmed. Please confirm your email.";
+                  errorElement.style.display = "block";
+              }
         });
           
     }
   };
+
+
 
 
   const handlelogOut = () => {
@@ -92,7 +103,7 @@ const handleLogin = (event) => {
         console.log(res);
         if (res.ok) {
           localStorage.removeItem("token");
-          window.location.href = "home.html";
+          window.location.href = "./index.html";
         }
       })
       .catch((err) => console.log("Logout Error", err));

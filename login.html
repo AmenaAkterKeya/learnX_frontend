@@ -25,13 +25,17 @@
         </div>
       </div>
       <div class="col-md-6 sign_text">
-        <div style="display: flex;">
+        <div style="display: flex;     justify-content: space-between;">
           <p class="logo">Learn<span class="x ">X</span></p>
-          <a href="home.html" class="back_home"> Back to Home </a>
+          <a href="index.html" class="back_home"> Back to Home </a>
         </div>
         <h1 class="title mt-5">Log into Your Account</h1>
         <form id="loginForm">
-          <p id="error" class="text-danger"></p>
+          <div class="alert alert-info" role="alert" id="error" style="
+          display: none;
+      ">
+          </div>
+          
           <div class="input_field">
             <label class="control-label">Username</label>
             <input id="login-username" type="text" class="input" placeholder="username" required />

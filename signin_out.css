@@ -1,6 +1,7 @@
 .signup-container{
     height: 100vh;
     display: flex;
+    align-items: center; 
 }
 .signUp {
     padding: 50px;
@@ -11,6 +12,10 @@
     height: 100vh;
     width: 50%;
     position: fixed;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
   }
 .signUp_img img{
     width: 40%;
