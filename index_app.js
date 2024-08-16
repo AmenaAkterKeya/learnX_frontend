@@ -64,25 +64,40 @@ const getAllCourses = (departmentName = '') => {
                 const instructorName = instructor ? `${instructor.user.first_name} ${instructor.user.last_name}` : 'Unknown';
   
                 const courseElement = document.createElement("div");
-                courseElement.classList.add("col-sm-6");
+                courseElement.classList.add("card-list");
                 courseElement.innerHTML = `
-                     <div class="card">
-                            <img src="${course.image}" class="card-img-top" alt="${course.title}">
-                            <div class="card-body">
-                                <h5 class="card-title">${course.title}</h5>
-                                <h6 class="card-subtitle">${instructorName}</h6>
-                                <p class="card-text">${course.content.slice(0, 100)}...</p>
-                                <p class="card-text" >
-                                    <strong style="color: #685F78; letter-spacing: 1px;">Departments:</strong>
-                                    ${departmentNames.map(department => `<span class="card_de">${department}</span>`).join(' ')}
-                                </p>
-                                <div class="d-flex justify-content-between">
-                                    <p>Lessons:  <span style="color:#f66962">${course.lesson} </span><i class="fa-regular fa-clock"></i></p>
-                                    <p>Fee: <span style="color:#f66962">$${course.fee}</span></p>
+                     <div class="card" >
+  <img src="${course.image}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h4 class="card-title"><a href="./index_course_details.html?id=${course.id}" class="enroll_btn" >${course.title.slice(0, 25)}..</a></h4>
+    
+    <p class="card-text " style="
+    font-size: 18px;
+">${course.content.slice(0, 80)}...</p>
+    
+                                <div style="
+    display: flex;
+    justify-content: space-between;
+        align-items: baseline;
+    margin-top: 25px;
+">
+                                     <p class="lesson"><i class="fa-regular fa-clock clock" ></i><span class="card_icon">${course.lesson} Lessons</span> </p>
+                                     <p class="lesson"><i class="fa-regular fa-user clock"></i><span class="card_icon">${instructorName}</span> </p>
+                                   
                                 </div>
-                                <a href="./index_course_details.html?id=${course.id}" class="btn" style="background-color: #f66962; color: white;">Learn More</a>
-                            </div>
-                        </div>
+                                <hr style="color:  #685F78;">
+                                 <div class="" style="    justify-content: space-between;
+    display: flex;
+">
+        <p class="card_fee"><span style="color: #f66962; ">$${course.fee}</span> USD</p>
+<div class="en"><i class="fa-solid fa-cart-shopping"></i>
+<a href="./index_course_details.html?id=${course.id}" class="enroll_btn" ><span style=" ">Enroll</span></a></div>
+        
+        </div>
+
+</div>
+ 
+</div>
                 `;
                 coursesContainer.appendChild(courseElement);
             });

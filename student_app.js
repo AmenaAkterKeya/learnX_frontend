@@ -54,11 +54,11 @@ const getAllCourses = (departmentName = '') => {
             coursesContainer.innerHTML = ""; 
 
             if (courses.length === 0) {
-                console.log("No courses found."); // Debugging statement
-                noCoursesMessage.style.display = "block"; // Show no courses message
+                console.log("No courses found."); 
+                noCoursesMessage.style.display = "block"; 
             } else {
-                console.log("Courses found."); // Debugging statement
-                noCoursesMessage.style.display = "none"; // Hide no courses message
+                console.log("Courses found.");
+                noCoursesMessage.style.display = "none"; 
                 courses.forEach((course) => {
                     const departmentNames = course.department.map(deptId => {
                         const department = departmentData.find(dept => dept.id === deptId);
@@ -96,7 +96,7 @@ const getAllCourses = (departmentName = '') => {
 ">
         <p class="card_fee"><span style="color: #f66962; ">$${course.fee}</span> USD</p>
 <div class="en"><i class="fa-solid fa-cart-shopping"></i>
-<a href="./course_detail.html?id=${course.id}" class="enroll_btn" ><span style=" ">Enroll</span></a></div>
+<a href="./student_course_details.html?id=${course.id}" class="enroll_btn" ><span style=" ">Enroll</span></a></div>
         
         </div>
 
@@ -111,6 +111,6 @@ const getAllCourses = (departmentName = '') => {
         .catch((error) => {
             console.error('Error fetching courses:', error);
             const noCoursesMessage = document.getElementById("no-courses-message");
-            noCoursesMessage.style.display = "block"; // Show no courses message on error
+            noCoursesMessage.style.display = "block"; 
         });
 };

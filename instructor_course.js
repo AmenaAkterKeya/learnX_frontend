@@ -1,4 +1,4 @@
-const loadInstructorId = () => {
+const loadInstructorIdOne = () => {
     const user_id = localStorage.getItem("user_id");
 
     fetch(`https://learnx-ldys.onrender.com/account/InstructorList/?user_id=${user_id}`)
@@ -19,47 +19,58 @@ const loadCourses = () => {
 
     let courseCounter = 1;
     fetch(`https://learnx-ldys.onrender.com/course/courses/?instructor_id=${instructor_id}`)
-      .then((res) => {
-          if (!res.ok) {
-              throw new Error(`HTTP error! Status: ${res.status}`);
-          }
-          return res.json();
-      })
-      .then((data) => {
-        console.log("Courses data:", data);
-        const parent = document.getElementById("table-body");
-        parent.innerHTML = ''; 
-        data.forEach((item) => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-              <td>${courseCounter++}</td>
-              <td><a href="./course_detail.html?id=${item.id}" style="
-    text-decoration: none;
-    color: #f66962;
-    font-size: 18px;
-">${item.title}</a></td>
-              <td>${item.lesson}</td>
-              <td>${item.fee}</td>
-              <td>
-                <button type="button" class="btn btn-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="${item.id}" style="background-color: #f66962; border:none;"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="btn btn-danger delete-btn" data-id="${item.id}" style="background-color: #685F78; border:none;margin-left: 8px;"><i class="fa-solid fa-trash"></i></button>
-              </td>
-          `;
-          parent.appendChild(tr);
-        });
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log("Courses data:", data);
+            const parent = document.getElementById("table-body");
+            const tab = document.getElementById("table_cap");
+            const noDataInstructor = document.getElementById("nodata_instructor");
 
-        document.querySelectorAll(".edit-btn").forEach(button => {
-          button.addEventListener("click", handleEditButtonClick);
-        });
+            if (data.length === 0) {
+                    noDataInstructor.style.display = "flex";
+                    noDataInstructor.style.justifyContent = "center";
+                    tab.style.display = "none";  
+                    parent.innerHTML = ''; 
+            } else {
 
-        document.querySelectorAll(".delete-btn").forEach(button => {
-          button.addEventListener("click", handleDeleteButtonClick);
+                    noDataInstructor.style.display = "none";  
+ 
+                tab.style.display = "contents"; 
+                parent.innerHTML = ''; 
+                data.forEach((item) => {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `
+                        <td>${courseCounter++}</td>
+                        <td><a href="./course_detail.html?id=${item.id}" style="text-decoration: none; color: #f66962; font-size: 18px;">${item.title}</a></td>
+                        <td>${item.lesson}</td>
+                        <td>${item.fee}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="${item.id}" style="background-color: #f66962; border:none;"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button class="btn btn-danger delete-btn" data-id="${item.id}" style="background-color: #685F78; border:none;margin-left: 8px;"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    `;
+                    parent.appendChild(tr);
+                });
+
+                document.querySelectorAll(".edit-btn").forEach(button => {
+                    button.addEventListener("click", handleEditButtonClick);
+                });
+
+                document.querySelectorAll(".delete-btn").forEach(button => {
+                    button.addEventListener("click", handleDeleteButtonClick);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching courses:', error);
         });
-      })
-      .catch(error => {
-          console.error('Error fetching courses:', error);
-      });
 };
+
 
 function fetchDepartments() {
     fetch('https://learnx-ldys.onrender.com/course/department/')
@@ -173,6 +184,7 @@ document.getElementById("editCourseForm").addEventListener("submit", (event) => 
 
 const handleDeleteButtonClick = (event) => {
     const courseId = event.target.getAttribute("data-id");
+    const tab = document.getElementById("table_cap");
     fetch(`https://learnx-ldys.onrender.com/course/courses/${courseId}/`, {
         method: "DELETE",
     }).then(() => {
@@ -183,5 +195,5 @@ const handleDeleteButtonClick = (event) => {
 
 
 
-loadInstructorId();
+loadInstructorIdOne();
 fetchDepartments();

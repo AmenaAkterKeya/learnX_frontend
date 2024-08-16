@@ -17,11 +17,11 @@
          <!-- Navbar start -->
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container d-flex justify-content-between align-items-center">
-      <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <a class="navbar-brand d-flex align-items-center" href="profile.html">
           <p class="logo">Learn<span class="x">X</span></p>
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse full_nav" id="navbarSupportedContent">
           <ul class="navbar-nav header_nav gap-3 d-flex justify-content-center">
@@ -76,8 +76,9 @@
         margin-bottom: 50px;    color: #f66962;
             font-size: 45px;
     ">My Courses</h2>
+    
         <table class="table table-bordered">
-            <thead>
+            <thead id="table_cap" style="display: none;">
                 <tr style="    font-size: 20px;">
                   <th>ID</th>
                   <th>Title</th>
@@ -91,14 +92,14 @@
               </tbody>
         </table>
     </div>
+    <div id="nodata_instructor" style="display: none;" >
+        <img src="img/nodata.png" alt="No data available" class="nodataa" >
+    </div>
     <!-- Course list end -->
  <!-- Modal -->
  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content" style="
-      width: 800px;
-      margin-left: -130px;
-  ">
+      <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="editModalLabel">Edit Course</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -129,23 +130,23 @@
                 <label class="control-label">Image</label>
                 <input id="edit-image"  name="image" type="file" class="input" placeholder="Upload image" required />
             </div>
-            <button type="submit" class="btn" style="background-color:#f66962; color:white">Save changes</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-<!-- footer start -->
+    <!-- footer start -->
 <div style="
 background-color: white;
-" class="footer">
-<section >
+">
+<section class="footer">
     <div class="row">
-        <div class="footer-col col-lg-4 col-md-6 col-sm-6">
+        <div class="footer-col col-lg-4">
             <p class="logo">Learn<span class="x">X</span></p>
             <p style="margin-top: 35px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris</p>
         </div>
-        <div class="footer-col col-lg-4 col-md-6 col-sm-6">
+        <div class="footer-col col-lg-4">
             <h4 style="margin-left: 30px;">Info</h4>
             <ul class="links">
                 <li><a href="#">About Us</a></li>
@@ -154,7 +155,7 @@ background-color: white;
                 <li><a href="#">Courses</a></li>
             </ul>
         </div>
-        <div class="footer-col col-lg-4 col-md-6 col-sm-6">
+        <div class="footer-col col-lg-4">
             <h4>Newsletter</h4>
             <p>Subscribe to our newsletter for a weekly dose of news, updates, helpful tips, and exclusive offers.</p>
             <form action="#">
@@ -172,6 +173,7 @@ background-color: white;
 </section>
 </div>
 <!-- footer end -->
+
 
     <script src="instructor_bio.js"></script> 
     <script src="instructor_course.js"></script>

@@ -1,0 +1,54 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    width:24rem;
+    margin: 10px;
+    box-shadow: 2px 2px 4px rgb(207, 207, 207);
+}
+
+.card img {
+    max-height: 225px;
+    width: 100%;
+    object-fit: cover;
+}
+.card_icon{
+    color:#685F78;    
+    font-size: 18px;
+}
+.card_fee{
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.75px;
+}
+#courses-row{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+} 
+
+@media (max-width: 768px){
+    .card{
+        width: 20rem;
+      }
+}
+@media (max-width: 576px) and (min-device-width: 320px){
+    .card{
+        width: 16rem;
+      }
+      .card_icon{  
+        font-size: 12px;
+    }
+    .card_fee{
+        font-size: 20px;
+    }
+    .a{
+        font-size: 11px;
+    }
+    .de{
+        font-size: 12px;
+    }
+}

@@ -58,7 +58,7 @@ const handleLogin = (event) => {
   errorElement.style.display = "none";
 
   if (username && password) {
-      fetch("https://learnx-ldys.onrender.com/account/login/", {
+      fetch("http://127.0.0.1:8000/account/login/", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ username, password }),
@@ -70,7 +70,11 @@ const handleLogin = (event) => {
               if (data.token && data.user_id) {
                   localStorage.setItem("token", data.token);
                   localStorage.setItem("user_id", data.user_id);
-                  window.location.href = "profile.html";
+                  if (data.role.toLowerCase() === "student") {
+                    window.location.href = "student_profile.html";
+                } else {
+                    window.location.href = "profile.html";
+                }
               } else {
                   // Show error message if login fails
                   errorElement.innerText = "Email not confirmed. Please confirm your email.";
@@ -81,7 +85,7 @@ const handleLogin = (event) => {
     }
   };
 
-
+ 
 
 
   const handlelogOut = () => {

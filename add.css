@@ -17,26 +17,40 @@
     display: flex;
     margin-top: 70px;
 }
-.detail-container{
-    width: 1100px;
-    margin: 100px auto 0;
-    border: 1px solid #dddada;
-    border-radius: 5px;
-    background-color: white;
-    padding: 30px;
-    box-shadow: 2px 2px 4px rgb(207, 207, 207);
-}
-.all{
-    display: flex;
-}
-.all img{
+.enroll-btn{
+    padding: 12px 25px;
     width: 100%;
-     height: auto;
-    border-radius: 15px;
+    margin: auto;
+    border: none;
+    background-color: #f66962;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    margin-bottom: 0rem;
+    margin-top: 10px;
 }
-.all_details{
-    margin-left: 50px;
-    
+.detail-container{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    max-width: 1170px;
+}
+ .detail_image{
+    max-width: 80%;
+ }
+ .pay{
+    width: 100%;
+    max-width: 370px;
+    border: 2px solid #d9d9d9;
+    border-radius: 10px;
+    padding: 20px;
+ }
+.detail_title{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 36px;
 }
 #department{
     border: 2px solid #B4A7F5;
@@ -48,3 +62,87 @@
     outline: none;
     color: #685F78;
 }
+.com_show{
+    display: flex;
+  width: 1170px;
+  max-width: 100%;
+  margin: 10px auto;
+}
+.comment_section {
+    width:770px;
+    max-width:100%;
+}
+.cour_head{
+    display:flex;
+}
+.cour_icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 80%;
+}
+.text_card{
+    text-align: justify;
+    max-width: 56%;
+    font-size: 17px;
+    margin-top: 12px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+      color: #685F78;
+}
+.pay_cour{
+    max-width: 320px;
+    width: 100%;
+}
+@media (max-width: 768px){
+   .add-container {
+    padding: 30px;
+} 
+.detail-container {
+    max-width: 730px;
+}
+.pay {
+    width: 89%;
+  }
+  .com_show{
+  width: 730px;
+}
+.comment_section {
+    width:500px;
+}
+}
+@media (max-width: 576px) and (min-device-width: 320px){
+    .add-container{
+        
+        padding: 20px;
+      }
+      .com_head {
+        width: 300px;
+    }
+    .comment_section {
+        width: 250px;
+        margin-left: 10px;
+    }
+      .cour_head{
+        display: block;
+    }
+    .detail_title {
+        font-size: 28px;
+    }
+    .cour_icon{
+     flex-wrap: wrap;
+    }
+    .text_card{
+        margin-left: 10px;
+        max-width: 75%;
+    }
+    .detail-container {
+        max-width: 300px;
+    }
+    .pay_cour{
+      margin-top: 20px;
+        
+    }
+}    

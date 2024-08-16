@@ -17,7 +17,7 @@
             <!-- Navbar start -->
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container d-flex justify-content-between align-items-center">
-        <a class="navbar-brand d-flex align-items-center" href="profile.html">
+        <a class="navbar-brand d-flex align-items-center" href="student_profile.html">
             <p class="logo">Learn<span class="x">X</span></p>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,21 +26,24 @@
         <div class="collapse navbar-collapse full_nav" id="navbarSupportedContent">
             <ul class="navbar-nav header_nav gap-3 d-flex justify-content-center">
                 <li class="nav-item ">
-                    <a class="nav-link" href="profile.html">Home</a>
+                    <a class="nav-link" href="student_profile.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="course.html">Courses</a>
+                    <a class="nav-link" href="course_student.html">Courses</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="addcourse.html">Add course</a>
+                    <a class="nav-link" href="deposit.html">Deposit </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="profile_contact.html">Contact</a>
+                    <a class="nav-link" href="student_contact.html">Contact</a>
                 </li>
             </ul>
             <ul class="navbar-nav inout gap-3">
+                <li class="nav-item" id="balance-container">
+                    <a class="nav-link" href="#" style="color: #f66962;">Balance: $<span id="current-balance">0</span></a>
+                </li>
                 <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" id="instructor-username" style="background-color: #f66962;border: none;font-size: 18px;">
+                  <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" id="student-username" style="background-color: #f66962;border: none;font-size: 18px;">
                   
                 </button>
                     <ul class="dropdown-menu" style="
@@ -49,13 +52,13 @@
                         <li class="nav-item" style="
                         margin-bottom: 10px;
                     ">
-                            <a class="nav-link header_log in_out" href="instructor_bio.html">Profile</a>
+                            <a class="nav-link header_log in_out" href="student_bio.html">Profile</a>
                         </li>
                         
                         <li class="nav-item" style="
                         margin-bottom: 10px;
                     ">
-                            <a class="nav-link header_log in_out" href="instructor_course.html">Dashboard</a>
+                            <a class="nav-link header_log in_out" href="enroll_course.html">Dashboard</a>
                         </li>
                         <li class="nav-item" style="
                         margin-bottom: 10px;
@@ -94,7 +97,7 @@
             color: #767676;
             padding: 8px;
             font-size:20px;
-        "><p id="instructor-user" style="
+        "><p id="student-user" style="
         margin-left: 10px;
         margin-top: auto;
         margin-bottom: auto;
@@ -116,7 +119,7 @@
                 font-size: 20px;
                 text-transform: capitalize;
                 padding: 8px;
-            "><p id="instructor-firstname" style="
+            "><p id="student-firstname" style="
             margin-left: 10px;
             margin-top: auto;
             margin-bottom: auto;
@@ -133,7 +136,7 @@
                 color: #767676;
                 font-size: 20px;
                 padding: 8px;
-            "><p id="instructor-lastname" style="
+            "><p id="student-lastname" style="
             margin-left: 10px;
             margin-top: auto;
             margin-bottom: auto;
@@ -150,9 +153,8 @@
                 border-radius: 4px;
                 color: #767676;
                 font-size: 20px;
-                text-transform: capitalize;
                 padding: 8px;
-            "><p id="instructor-email" style="
+            "><p id="student-email" style="
             margin-left: 10px;
             margin-top: auto;
             margin-bottom: auto;
@@ -173,7 +175,7 @@
             font-size: 20px;
             text-transform: capitalize;
             padding: 8px;
-        "><p id="instructor-mobile" style="
+        "><p id="student-mobile" style="
         margin-left: 10px;
         margin-top: auto;
         margin-bottom: auto;
@@ -221,8 +223,10 @@
  </div>
  <!-- footer end -->
  
-    <script src="instructor_bio.js"></script>
+    
     <script src="auth.js"></script>
+    <script src="addAmount.js"></script>
+<script src="student_bio.js"></script>/script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
