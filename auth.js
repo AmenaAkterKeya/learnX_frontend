@@ -17,6 +17,7 @@ const handleRegistration = (event) => {
         confirm_password,
         role,
     };
+    
     if (password === confirm_password) {
         document.getElementById("error").innerText = "";
         if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
@@ -37,9 +38,13 @@ const handleRegistration = (event) => {
         }
     } else {
       
-        document.getElementById("error").innerText =
+            document.getElementById("error").innerText =
             "Password and confirm password do not match";
+           
     }
+    const errorMessageContainer = document.querySelector('#error');
+    errorMessageContainer.textContent = error.message;
+    errorMessageContainer.style.display = 'block';
 };
 
 
@@ -58,7 +63,7 @@ const handleLogin = (event) => {
   errorElement.style.display = "none";
 
   if (username && password) {
-      fetch("http://127.0.0.1:8000/account/login/", {
+      fetch("https://learnx-ldys.onrender.com/account/login/", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ username, password }),
