@@ -17,7 +17,6 @@ const handleRegistration = (event) => {
       confirm_password,
       role,
   };
-
   if (password === confirm_password) {
       document.getElementById("error").innerText = "";
       if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
@@ -28,23 +27,16 @@ const handleRegistration = (event) => {
               body: JSON.stringify(info),
           })
           .then((res) => res.json())
-          .then((data) => {
-              if (data.success) {
-                  // Show verification alert if registration is successful
-                  alert("Registration successful! Please check your email to verify your account.");
-                  window.location.href = "login.html";
-              } else {
-                  document.getElementById("error").innerText = data.error || "Registration failed. Please try again.";
-              }
-          })
-          .catch((error) => {
-              document.getElementById("error").innerText = "An error occurred. Please try again.";
-          });
+          .then((data) =>{console.log(data)
+            window.location.href = "login.html";
+          } );
       } else {
+         
           document.getElementById("error").innerText =
-              "Password must contain eight characters, at least one letter, one number, and one special character.";
+              "Password must contain eight characters, at least one letter, one number and one special character.";
       }
   } else {
+    
       document.getElementById("error").innerText =
           "Password and confirm password do not match";
   }

@@ -33,10 +33,7 @@
         </div>
         <h1 class="title mt-5">Sign Up</h1>
         <form action="/account/register/" onsubmit="handleRegistration(event)">
-            <div class="alert alert-info" role="alert" id="error" style="
-          display: none;
-      ">
-        </div>
+            <p id="error" class="text-danger"></p>
             <div class="input_field">
                 <label class="control-label">Username</label>
                 <input id="username" type="text" class="input" placeholder="username" required />

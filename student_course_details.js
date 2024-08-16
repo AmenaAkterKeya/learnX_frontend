@@ -129,7 +129,7 @@ color:#b5b5b5;
       <div class="alert alert-info" role="alert" id="error" style="
           display: none;
       ">
-          </div>
+          </p>
                 <input type="submit" class="enroll-btn" value="ENROLL NOW" />
               </form>
           </div>
