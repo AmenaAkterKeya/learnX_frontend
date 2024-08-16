@@ -1,50 +1,53 @@
 const handleRegistration = (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const username = getValue("username");
-    const first_name = getValue("first_name");
-    const last_name = getValue("last_name");
-    const email = getValue("email");
-    const password = getValue("password");
-    const confirm_password = getValue("confirm_password");
-    const role = getValue("role");
-    const info = {
-        username,
-        first_name,
-        last_name,
-        email,
-        password,
-        confirm_password,
-        role,
-    };
-    
-    if (password === confirm_password) {
-        document.getElementById("error").innerText = "";
-        if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
-            // Password meets criteria
-            fetch("https://learnx-ldys.onrender.com/account/register/", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify(info),
-            })
-            .then((res) => res.json())
-            .then((data) =>{console.log(data)
-              window.location.href = "login.html";
-            } );
-        } else {
-           
-            document.getElementById("error").innerText =
-                "Password must contain eight characters, at least one letter, one number and one special character.";
-        }
-    } else {
-      
-            document.getElementById("error").innerText =
-            "Password and confirm password do not match";
-           
-    }
-    const errorMessageContainer = document.querySelector('#error');
-    errorMessageContainer.textContent = error.message;
-    errorMessageContainer.style.display = 'block';
+  const username = getValue("username");
+  const first_name = getValue("first_name");
+  const last_name = getValue("last_name");
+  const email = getValue("email");
+  const password = getValue("password");
+  const confirm_password = getValue("confirm_password");
+  const role = getValue("role");
+  const info = {
+      username,
+      first_name,
+      last_name,
+      email,
+      password,
+      confirm_password,
+      role,
+  };
+
+  if (password === confirm_password) {
+      document.getElementById("error").innerText = "";
+      if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
+          // Password meets criteria
+          fetch("https://learnx-ldys.onrender.com/account/register/", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify(info),
+          })
+          .then((res) => res.json())
+          .then((data) => {
+              if (data.success) {
+                  // Show verification alert if registration is successful
+                  alert("Registration successful! Please check your email to verify your account.");
+                  window.location.href = "login.html";
+              } else {
+                  document.getElementById("error").innerText = data.error || "Registration failed. Please try again.";
+              }
+          })
+          .catch((error) => {
+              document.getElementById("error").innerText = "An error occurred. Please try again.";
+          });
+      } else {
+          document.getElementById("error").innerText =
+              "Password must contain eight characters, at least one letter, one number, and one special character.";
+      }
+  } else {
+      document.getElementById("error").innerText =
+          "Password and confirm password do not match";
+  }
 };
 
 
