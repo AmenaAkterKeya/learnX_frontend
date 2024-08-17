@@ -28,6 +28,7 @@ const handleRegistration = (event) => {
           })
           .then((res) => res.json())
           .then((data) =>{console.log(data)
+            alert("Verify Your Email Account")
             window.location.href = "login.html";
           } );
       } else {
