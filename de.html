@@ -76,50 +76,50 @@
     
 
   
-<section class="bg-light pt-5 pb-5 shadow-sm">
-    <div class="container">
-      <div class="row pt-5">
-        <div class="col-12">
-          <h3 class="text-uppercase border-bottom mb-4">Equal height Bootstrap 5 cards example</h3>
-        </div>
+  <deposit-modal>
+    <h1 class="title text-center">Deposit</h1>
+    <form id="deposit-form" onsubmit="addDeposit(event)">
+        <div class="alert alert-info" role="alert" id="error" style="display: none;"></div>
+    <ul class="payment-selection">
+      <li data-payment="card" class="payment-entity selected">Card</li>
+      <li data-payment="paysafe" class="payment-entity">PaysafeCard</li>
+      <li data-payment="neteller" class="payment-entity">Neteller</li>
+    </ul>
+  
+    <label>
+      <span>Amount</span>
+      <input id="deposit-amount" type="text" placeholder="20.00" required>
+    </label>
+  
+    <!-- This is the section you want to show for all payment methods -->
+    <section class="provider-section card active">
+      <label>
+        <span>Card number</span>
+        <input type="text" placeholder="1111 2222 3333 4444">
+        <a class="add-new-card" href="">+ Manage cards</a>
+      </label>
+      <div class="inline">
+        <label>
+          <span>Expires</span>
+          <input type="text" placeholder="04/17">
+        </label>
+        <label>
+          <span>CVV</span>
+          <input type="text" placeholder="123">
+        </label>
       </div>
-      <div class="row">
-        <!--ADD CLASSES HERE d-flex align-items-stretch-->
-        <div class="col-lg-4 mb-3 d-flex align-items-stretch">
-          <div class="card">
-            <img src="https://i.postimg.cc/28PqLLQC/dotonburi-canal-osaka-japan-700.jpg" class="card-img-top" alt="Card Image">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Dōtonbori Canal</h5>
-              <p class="card-text mb-4">Is a manmade waterway dug in the early 1600's and now displays many landmark commercial locals and vivid neon signs.</p>
-              <a href="#" class="btn btn-primary mt-auto align-self-start">Book now</a>
-            </div>
-          </div>
-        </div>
-        <!--ADD CLASSES HERE d-flex align-items-stretch-->
-        <div class="col-lg-4 mb-3 d-flex align-items-stretch">
-          <div class="card">
-            <img src="https://i.postimg.cc/4xVY64PV/porto-timoni-double-beach-corfu-greece-700.jpg" class="card-img-top" alt="Card Image">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Porto Timoni Double Beach</h5>
-              <p class="card-text mb-4">Near Afionas village, on the west coast of Corfu island. The two beaches form two unique bays. The turquoise color of the sea contrasts to the high green hills surrounding it.</p>
-              <a href="#" class="btn btn-primary mt-auto align-self-start">Book now</a>
-            </div>
-          </div>
-        </div>
-        <!--ADD CLASSES HERE d-flex align-items-stretch-->
-        <div class="col-lg-4 mb-3 d-flex align-items-stretch">
-          <div class="card">
-            <img src="https://i.postimg.cc/TYyLPJWk/tritons-fountain-valletta-malta-700.jpg" class="card-img-top" alt="Card Image">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Tritons Fountain</h5>
-              <p class="card-text mb-4">Located just outside the City Gate of Valletta, Malta. It consists of three bronze Tritons holding up a large basin, balanced on a concentric base built out of concrete and clad in travertine slabs.</p>
-              <a href="#" class="btn btn-primary mt-auto align-self-start">Book now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+    <section class="provider-section neteller hide">
+        <label class="label">
+          <span>Secure ID</span>
+          <input type="text" placeholder="123456">
+        </label>
+      </section>
+    <div class="divider">...</div>
+  
+    <input type="submit" class="submit-btn button" value="Deposit" />
+</form>
+  </deposit-modal>
     
  <!-- footer start -->
  <div style="
