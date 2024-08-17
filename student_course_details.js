@@ -128,8 +128,8 @@ color:#b5b5b5;
     <form id="enroll-btn" onsubmit="handleEnrollClick(event)">
       <div class="alert alert-info" role="alert" id="error" style="
           display: none;
-      ">
-          </p>
+      "></div>
+         
                 <input type="submit" class="enroll-btn" value="ENROLL NOW" />
               </form>
           </div>

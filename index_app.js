@@ -66,14 +66,17 @@ const getAllCourses = (departmentName = '') => {
                 const courseElement = document.createElement("div");
                 courseElement.classList.add("card-list");
                 courseElement.innerHTML = `
-                     <div class="card" >
+
+
+<div class="card" >
+                     
   <img src="${course.image}" class="card-img-top" alt="...">
   <div class="card-body">
     <h4 class="card-title"><a href="./index_course_details.html?id=${course.id}" class="enroll_btn" >${course.title.slice(0, 25)}..</a></h4>
     
     <p class="card-text " style="
     font-size: 18px;
-">${course.content.slice(0, 80)}...</p>
+">${course.content.slice(0,75)}...</p>
     
                                 <div style="
     display: flex;
@@ -98,6 +101,7 @@ const getAllCourses = (departmentName = '') => {
 </div>
  
 </div>
+
                 `;
                 coursesContainer.appendChild(courseElement);
             });

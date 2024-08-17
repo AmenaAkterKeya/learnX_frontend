@@ -24,7 +24,7 @@ const loadStudentCourses = () => {
     const tableCap = document.getElementById('table_cap');
     const noDataInstructor = document.getElementById("nodata_instructor");
 
-    fetch(`http://127.0.0.1:8000/course/enrollview/${student_id}`)
+    fetch(`https://learnx-ldys.onrender.com/course/enrollview/${student_id}`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {

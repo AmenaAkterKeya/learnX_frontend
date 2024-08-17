@@ -1,0 +1,229 @@
+/* Base styling remains the same */
+deposit-modal {
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  background: #fff;
+  width: 40rem;
+  padding: 3rem;
+  flex-direction: column;
+  box-shadow: 2px 2px 4px rgb(207, 207, 207);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+deposit-modal > * + * {
+  margin-bottom: 2rem;
+}
+
+.inline {
+  display: flex;
+  gap: 2rem;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: normal;
+  margin: 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 2rem;
+}
+
+.button {
+  background: #f66962;
+  border: none;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-top: -55px;
+}
+
+button:hover {
+  background: #f66962;
+}
+
+.add-new-card {
+  display: block;
+  color: #f66962;
+  font-size: 1rem;
+  margin: 1.5rem 0 2rem;
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.add-new-card:hover {
+  opacity: 1;
+}
+
+.payment-selection {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.payment-selection li {
+  border: 1px solid #f66962;
+  padding: 1rem;
+  width: 10rem;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.payment-selection li:hover {
+  opacity: 1;
+}
+
+.payment-selection li.selected {
+  background: #f66962;
+  color: #fff;
+  opacity: 1;
+  font-weight: 500;
+}
+
+label {
+  font-size: 1.5rem;
+  position: relative;
+  width: 100%;
+}
+
+label span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+label input {
+  padding: 1.5rem 0 0.5rem;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  outline: none;
+  background: transparent;
+  margin-top: 12px;
+}
+.provider-section{
+  padding: 20px;
+}
+.divider {
+  font-size: 1.5rem;
+  letter-spacing: 10px;
+  opacity: 0.3;
+  text-align: center;
+}
+.label{
+  margin-bottom: 15px;
+}
+
+
+/* Responsive styling */
+@media (max-width: 1200px) {
+  deposit-modal {
+    width: 60rem;
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  deposit-modal {
+    width: 50rem;
+    padding: 2.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .button {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  deposit-modal {
+    width: 40rem;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .payment-selection {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+
+  .payment-selection li {
+    width: 100%;
+  }
+
+  .inline {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  deposit-modal {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  label {
+    font-size: 1.2rem;
+  }
+
+  label input {
+    font-size: 1rem;
+  }
+
+  .button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+@media (max-width: 576px){
+  deposit-modal {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  label input {
+    font-size: 0.9rem;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    display: flex;
+    margin-top: -45px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
