@@ -94,7 +94,7 @@ color:#b5b5b5;
       <p class="card-text text_card">${course.content}</p></div>
 <div class="pay_cour"> 
 <div class="pay">
-<img src="/img/course.jpg" class="detail_image" alt="course.jpg" style="
+<img src="${course.image}" class="detail_image" alt="${course.title}" style="
   max-width: 100%;
   border-radius: 5px;
 ">
