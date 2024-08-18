@@ -22,7 +22,8 @@ function fetchDepartments() {
 // add course
 const handleCourse = (event) => {
     event.preventDefault();
-
+    const preloader = document.getElementById("preloader");
+    preloader.style.display = "flex";
     const form = document.getElementById("add_form");
     const formData = new FormData(form);
     const token = localStorage.getItem("token");
@@ -85,5 +86,8 @@ const handleCourse = (event) => {
     })
     .catch((error) => {
         console.error('Error:', error);
+    })
+    .finally(() => {
+        preloader.style.display = "none";
     });
 };

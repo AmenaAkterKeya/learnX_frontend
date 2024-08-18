@@ -96,6 +96,27 @@
     max-width: 320px;
     width: 100%;
 }
+.card_feee{
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.75px;
+    color: #f66962;
+    margin-top: 12px;  
+}
+@media (max-width: 1200px) {
+    .detail-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    max-width: 950px;
+}
+.com_head {
+    width: 950px;
+}
+    .com_show {
+        width: 950px;
+    }
+}
 @media (max-width: 768px){
    .add-container {
     padding: 30px;
@@ -109,21 +130,35 @@
   .com_show{
   width: 730px;
 }
+.com_head{
+    width: 730px;
+  }
+  .text_card {
+    max-width: 110%;
+  }
 .comment_section {
     width:500px;
 }
 }
-@media (max-width: 576px) and (min-device-width: 320px){
+@media (max-width: 576px) {
     .add-container{
         
         padding: 20px;
       }
+      .com{
+        display: flex;
+        justify-content: center;
+      }
       .com_head {
         width: 300px;
+        justify-content: center;
+        display: flex;
     }
     .comment_section {
-        width: 250px;
-        margin-left: 10px;
+        width: 300px;
+
+        margin-left: auto;
+        margin-right: auto;
     }
       .cour_head{
         display: block;
@@ -131,12 +166,15 @@
     .detail_title {
         font-size: 28px;
     }
+    .comment_course {
+        width: 300px;
+    }
     .cour_icon{
      flex-wrap: wrap;
     }
     .text_card{
-        margin-left: 10px;
-        max-width: 75%;
+        margin-left: 4px;
+        max-width: 90%;
     }
     .detail-container {
         max-width: 300px;
@@ -145,4 +183,7 @@
       margin-top: 20px;
         
     }
-}    
+    .card_feee{
+        font-size: 22px;
+    }
+}

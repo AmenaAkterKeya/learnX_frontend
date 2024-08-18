@@ -72,15 +72,16 @@ const getAllCourses = (departmentName = '') => {
                     courseElement.classList.add("card-list");
                 courseElement.innerHTML = `
 
+
  <div class="card" >
                      
   <img src="${course.image}" class="card-img-top" alt="...">
   <div class="card-body">
-    <h4 class="card-title"><a href="./course_detail.html?id=${course.id}" class="enroll_btn" >${course.title.slice(0, 25)}..</a></h4>
+    <h4 class="card-title"><a href="./course_detail.html?id=${course.id}" class="enroll_btn" >${course.title.slice(0, 20)}..</a></h4>
     
-    <p class="card-text " style="
+  <p class="card-text " style="
     font-size: 18px;
-">${course.content.slice(0,75)}...</p>
+">${course.content.slice(0,35)}...</p>
     
                                 <div style="
     display: flex;
@@ -89,7 +90,7 @@ const getAllCourses = (departmentName = '') => {
     margin-top: 25px;
 ">
                                      <p class="lesson"><i class="fa-regular fa-clock clock" ></i><span class="card_icon">${course.lesson} Lessons</span> </p>
-                                     <p class="lesson"><i class="fa-regular fa-user clock"></i><span class="card_icon">${instructorName}</span> </p>
+                                     <p class="lesson"><i class="fa-regular fa-user clock"></i><span class="card_icon">${instructor.user.first_name}</span> </p>
                                    
                                 </div>
                                 <hr style="color:  #685F78;">
@@ -103,8 +104,8 @@ const getAllCourses = (departmentName = '') => {
         </div>
 
 </div>
- 
-</div>
+ </div>
+
 
                
                     `;

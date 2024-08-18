@@ -1,3 +1,4 @@
+
 const handleRegistration = (event) => {
   event.preventDefault();
 
@@ -17,7 +18,10 @@ const handleRegistration = (event) => {
       confirm_password,
       role,
   };
+  const preloader = document.getElementById("preloader");
+
   if (password === confirm_password) {
+    preloader.style.display = "flex";
       document.getElementById("error").innerText = "";
       if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
           // Password meets criteria
@@ -27,7 +31,9 @@ const handleRegistration = (event) => {
               body: JSON.stringify(info),
           })
           .then((res) => res.json())
-          .then((data) =>{console.log(data)
+          .then((data) =>{
+            preloader.style.display = "none";
+            console.log(data)
             alert("Verify Your Email Account")
             window.location.href = "login.html";
           } );
@@ -52,13 +58,17 @@ const handleLogin = (event) => {
   event.preventDefault();
   const username = getValue("login-username");
   const password = getValue("login-password");
-  console.log(username, password);
 
-  // Hide the error message initially
+
+  const preloader = document.getElementById("preloader");
+
   const errorElement = document.getElementById("error");
   errorElement.style.display = "none";
 
   if (username && password) {
+    
+      preloader.style.display = "flex";
+    
       fetch("https://learnx-ldys.onrender.com/account/login/", {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -66,7 +76,7 @@ const handleLogin = (event) => {
       })
           .then((res) => res.json())
           .then((data) => {
-              console.log(data);
+              preloader.style.display = "none";
 
               if (data.token && data.user_id) {
                   localStorage.setItem("token", data.token);
@@ -77,15 +87,18 @@ const handleLogin = (event) => {
                     window.location.href = "profile.html";
                 }
               } else {
-                  // Show error message if login fails
                   errorElement.innerText = "Email not confirmed. Please confirm your email.";
                   errorElement.style.display = "block";
               }
-        });
-          
-    }
-  };
-
+          })
+          .catch((error) => {
+              preloader.style.display = "none";
+              console.error("Login Error:", error);
+              errorElement.innerText = "Something went wrong. Please try again.";
+              errorElement.style.display = "block";
+          });
+  }
+};
  
 
 

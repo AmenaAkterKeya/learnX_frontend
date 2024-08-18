@@ -56,7 +56,9 @@ const getCourseDetail = async () => {
     const instructorName = instructor ? `${instructor.user.first_name} ${instructor.user.last_name}` : 'Unknown';
 
     const courseDetailHTML = `
-    
+     <div class="alert alert-info" role="alert" id="error" style="
+          display: none;
+      "></div>
 <div><div class="cour_head">
 <div style="
   width: 100%;
@@ -104,13 +106,7 @@ color:#b5b5b5;
   justify-content: space-between;
   align-items: end;
 ">
-<div><p style="
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: 0.75px;
-  color: #f66962;
-  margin-top: 12px;
-"><span>$${course.fee}</span> USD</p></div>
+<div><p class="card_feee"><span>$${course.fee}</span> USD</p></div>
 <div><p class="lesson" style="
   grid-column-gap: 8px;
   color: #ff7070;
@@ -126,11 +122,10 @@ color:#b5b5b5;
 <div>
 <div>
     <form id="enroll-btn" onsubmit="handleEnrollClick(event)">
-      <div class="alert alert-info" role="alert" id="error" style="
-          display: none;
-      "></div>
+     
          
                 <input type="submit" class="enroll-btn" value="ENROLL NOW" />
+                <div class="spinner" id="spinner" style="display: none;"></div>
               </form>
           </div>
        <div style="
@@ -228,50 +223,81 @@ document.getElementById('Form').addEventListener('submit', async function(e) {
   }
 });
 
+const getEnrollmentStatus = async (courseId) => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`https://learnx-ldys.onrender.com/course/enrolls/${courseId}/status/`, {
+      headers: {
+        'Authorization': `token ${token}`
+      }
+    });
+    if (!response.ok) {
+      throw new Error('Failed to fetch enrollment status');
+    }
+    const data = await response.json();
+    // console.log('Enrollment status data:', data); 
+    const enrollButton = document.querySelector('#enroll-btn input[type="submit"]');
+    if (data.enrolled) {
+      enrollButton.value = 'ENROLLED';
 
-const handleEnrollClick = (event) => {
-  event.preventDefault(); 
-  const courseId = getQueryParam("id"); 
+    } else {
+      enrollButton.value = 'ENROLL NOW';
+
+    }
+  } catch (error) {
+    console.error('Error fetching enrollment status:', error);
+  }
+};
+
+const handleEnrollClick = async (event) => {
+  event.preventDefault();
+  const courseId = getQueryParam("id");
   const token = localStorage.getItem('token');
 
-  const enrollInCourse = async (courseId) => {
-    try {
-      const response = await fetch(`https://learnx-ldys.onrender.com/course/enrolls/${courseId}/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `token ${token}`
-        },
-        body: JSON.stringify({ course: courseId }),
-      });
+  // Show the preloader spinner and disable the button
+  const enrollButton = document.querySelector('#enroll-btn input[type="submit"]');
+  const spinner = document.getElementById('spinner');
+  enrollButton.disabled = true;
+  enrollButton.value = 'Enrolling...';
+  spinner.style.display = 'inline-block';
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to enroll in course');
-      }
+  try {
+    const response = await fetch(`https://learnx-ldys.onrender.com/course/enrolls/${courseId}/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `token ${token}`
+      },
+      body: JSON.stringify({ course: courseId }),
+    });
 
-      const enrollButton = document.querySelector('#enroll-btn input[type="submit"]');
-      enrollButton.value = 'Enrolled';
-
-      // Optionally, update balance information on the page if needed
-      const currentBalance = await response.json();
-      console.log('Current Balance:', currentBalance.current_balance);
-
-    } catch (error) {
-      console.error('Error enrolling in course:', error);
-      
-      // Display error message on the UI
-      const errorMessageContainer = document.querySelector('#error');
-      errorMessageContainer.textContent = error.message;
-      errorMessageContainer.style.display = 'block';
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to enroll in course');
     }
-  };
 
-  enrollInCourse(courseId);
+    const currentBalance = await response.json();
+    console.log('Current Balance:', currentBalance.current_balance);
+    enrollButton.value = 'ENROLLED'; // Change button text to 'ENROLLED'
+    window.location.href = "enroll_course.html";
+
+  } catch (error) {
+    console.error('Error enrolling in course:', error);
+    const errorMessageContainer = document.querySelector('#error');
+    errorMessageContainer.textContent = error.message;
+    errorMessageContainer.style.display = 'block';
+
+    // Reset button and hide spinner
+    enrollButton.disabled = false;
+    enrollButton.value = 'ENROLL NOW';
+    spinner.style.display = 'none';
+  }
 };
-fetchDepartments();
-fetchInstructors();
-getCourseDetail().then(() => {
+document.addEventListener('DOMContentLoaded', async () => {
   const courseId = getQueryParam("id");
-  getCourseComments(courseId);
+  await fetchDepartments();
+  await fetchInstructors();
+  await getCourseDetail();
+  await getCourseComments(courseId);
+  await getEnrollmentStatus(courseId); // Check enrollment status
 });

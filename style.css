@@ -82,9 +82,9 @@ body {
   padding: 20px;
 }
 
-.banner_right img {
+/* .banner_right img {
   margin-left: 40px;
-}
+} */
 
 .banner_left {
   margin-top: auto;
@@ -328,6 +328,23 @@ margin-right: auto;
 .com_head{
   width: 1170px;display: flex;margin: auto;
 }
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
 /* Footer */
 .footer {
 
@@ -410,10 +427,15 @@ margin-right: auto;
   .header_nav {
       margin-left: 0;
   }
-
-  .inout {
-      margin-left: 0;
-  }
+  .navv{
+    margin-left: 190px;
+}
+.banner_right img {
+  width: 85%;
+}
+.inout {
+  margin-left: 30px;
+}
 
   .banner_content {
       margin-left: 20px;
@@ -422,13 +444,19 @@ margin-right: auto;
   .feature-container {
       margin: 20px auto;
   }
-
+  .bio {
+    width: 950px;
+  }
   .footer {
       padding: 20px;
   }
 }
 
 @media (max-width: 992px) {
+  .navv{
+    margin-left: 190px;
+}
+
   .banner_left h1 {
       font-size: 36px;
   }
@@ -484,8 +512,8 @@ margin-right: auto;
   .comment_course {
     width: 500px;
   }
-  .com_head{
-    width: 730px;
+  .header_nav{
+    margin-bottom: 10px;
   }
   .im_in{
     margin-left: auto;
@@ -505,7 +533,10 @@ margin-right: auto;
   
 }
 
-@media (max-width: 576px) and (min-device-width: 320px){
+@media (max-width: 576px){
+  .header_nav{
+    margin-bottom: 10px;
+  }
   .banner-container {
       padding: 10px;
   }
@@ -520,6 +551,13 @@ margin-right: auto;
   width: 320px;
   display: flex;
   justify-content: center;
+
+}
+.bio p{
+  font-size: 16px !important;
+}
+.bio h2{
+  font-size: 22px !important;
 }
 .im_in {
   margin-left: auto;
@@ -546,6 +584,17 @@ margin-right: auto;
   margin-left: 42px;
 
 }
+.pro {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+}
+.lesson1 {
+  font-size: 10px;
+}
+.lesson1 span{
+  font-size: 15px !important;
+}
 .contact_container {
   width: 300px;
 }
@@ -558,8 +607,11 @@ margin-right: auto;
   .feature1 img {
       margin-top: -20px;
   }
-
+.ins{
+  margin-top: 25px;
+}
   .footer {
       padding: 10px;
+      margin-top: 75px;
   }
 }

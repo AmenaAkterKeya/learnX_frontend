@@ -50,8 +50,8 @@ const loadCourses = () => {
                         <td>${item.lesson}</td>
                         <td>${item.fee}</td>
                         <td>
-                            <button type="button" class="btn btn-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="${item.id}" style="background-color: #f66962; border:none;"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button class="btn btn-danger delete-btn" data-id="${item.id}" style="background-color: #685F78; border:none;margin-left: 8px;"><i class="fa-solid fa-trash"></i></button>
+                            <button type="button" class="btn btn-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="${item.id}" style="background-color: #f66962; border:none;"><i class="fa-solid fa-pen-to-square" data-id="${item.id}"></i></button>
+                            <button class="btn btn-danger delete-btn" data-id="${item.id}" style="background-color: #685F78; border:none;margin-left: 8px;"><i class="fa-solid fa-trash delete-btn" data-id="${item.id}"></i></button>
                         </td>
                     `;
                     parent.appendChild(tr);

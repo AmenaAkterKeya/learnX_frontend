@@ -109,7 +109,7 @@ color:#b5b5b5;
   letter-spacing: 0.75px;
   color: #f66962;
   margin-top: 12px;
-"><span>$${course.fee}</span> USD</p></div>
+" class="card_fee"><span>$${course.fee}</span> USD</p></div>
 <div><p class="lesson" style="
   grid-column-gap: 8px;
   color: #ff7070;
