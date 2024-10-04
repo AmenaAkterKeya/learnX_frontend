@@ -13,7 +13,7 @@ const addDeposit = (event) => {
 
     console.log("Token:", token);
     console.log("Deposit Amount:", depositAmount); 
-    const addAmountUrl = "https://learnx-ldys.onrender.com/course/balance/";
+    const addAmountUrl = "https://learn-x-seven.vercel.app/course/balance/";
 
     fetch(addAmountUrl, {
         method: "POST",
@@ -45,7 +45,7 @@ const addDeposit = (event) => {
 
 // Function to fetch and display the updated balance
 const getUpdatedBalance = () => {
-    const balanceViewUrl = 'https://learnx-ldys.onrender.com/course/balanceview/';
+    const balanceViewUrl = 'https://learn-x-seven.vercel.app/course/balanceview/';
     const token = localStorage.getItem("token");
 
     fetch(balanceViewUrl, {

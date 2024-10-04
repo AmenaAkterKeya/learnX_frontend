@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             return;
         }
 
-        fetch(`https://learnx-ldys.onrender.com/account/StudentList/?user_id=${user_id}`)
+        fetch(`https://learn-x-seven.vercel.app/account/StudentList/?user_id=${user_id}`)
           .then((res) => {
             if (!res.ok) {
               throw new Error(`Network response was not ok: ${res.statusText}`);

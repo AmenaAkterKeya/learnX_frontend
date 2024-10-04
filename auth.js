@@ -25,7 +25,7 @@ const handleRegistration = (event) => {
       document.getElementById("error").innerText = "";
       if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
           // Password meets criteria
-          fetch("https://learnx-ldys.onrender.com/account/register/", {
+          fetch("https://learn-x-seven.vercel.app/account/register/", {
               method: "POST",
               headers: { "content-type": "application/json" },
               body: JSON.stringify(info),
@@ -69,7 +69,7 @@ const handleLogin = (event) => {
     
       preloader.style.display = "flex";
     
-      fetch("https://learnx-ldys.onrender.com/account/login/", {
+      fetch("https://learn-x-seven.vercel.app/account/login/", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ username, password }),
@@ -110,7 +110,7 @@ const handleLogin = (event) => {
       return;
     }
   
-    fetch("https://learnx-ldys.onrender.com/account/logout/", {
+    fetch("https://learn-x-seven.vercel.app/account/logout/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

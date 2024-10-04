@@ -2,7 +2,7 @@ const loadInstructorId = () => {
     const user_id = localStorage.getItem("user_id");
     console.log("User ID:", user_id); 
 
-    fetch(`https://learnx-ldys.onrender.com/account/InstructorList/?user_id=${user_id}`)
+    fetch(`https://learn-x-seven.vercel.app/account/InstructorList/?user_id=${user_id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log("API Response:", data);

@@ -7,7 +7,7 @@ let departmentDataa = [];
 let instructorDataa = [];
 
 const fetchDepartments = () => {
-  return fetch('https://learnx-ldys.onrender.com/course/department/')
+  return fetch('https://learn-x-seven.vercel.app/course/department/')
     .then(response => response.json())
     .then(data => {
       departmentDataa = data;
@@ -23,7 +23,7 @@ const fetchDepartments = () => {
 };
 
 const fetchInstructors = () => {
-  return fetch("https://learnx-ldys.onrender.com/account/InstructorList/")
+  return fetch("https://learn-x-seven.vercel.app/account/InstructorList/")
     .then(response => response.json())
     .then(data => {
       instructorDataa = data;
@@ -38,7 +38,7 @@ const getCourseDetail = async () => {
   try {
     const courseId = getQueryParam("id");
     
-    const response = await fetch(`https://learnx-ldys.onrender.com/course/courses/${courseId}/`);
+    const response = await fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/`);
     if (!response.ok) {
       throw new Error('Failed to fetch course details');
     }
@@ -149,7 +149,7 @@ color:#b5b5b5;
 
 const getCourseComments = async (courseId) => {
   try {
-    const response = await fetch(`https://learnx-ldys.onrender.com/course/courses/${courseId}/comments/`);
+    const response = await fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/comments/`);
     if (!response.ok) {
       throw new Error('Failed to fetch comments');
     }
@@ -203,7 +203,7 @@ document.getElementById('Form').addEventListener('submit', async function(e) {
   };
 
   try {
-    const response = await fetch('https://learnx-ldys.onrender.com/course/comment/', {
+    const response = await fetch('https://learn-x-seven.vercel.app/course/comment/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -226,7 +226,7 @@ document.getElementById('Form').addEventListener('submit', async function(e) {
 const getEnrollmentStatus = async (courseId) => {
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch(`https://learnx-ldys.onrender.com/course/enrolls/${courseId}/status/`, {
+    const response = await fetch(`https://learn-x-seven.vercel.app/course/enrolls/${courseId}/status/`, {
       headers: {
         'Authorization': `token ${token}`
       }
@@ -246,6 +246,7 @@ const getEnrollmentStatus = async (courseId) => {
     }
   } catch (error) {
     console.error('Error fetching enrollment status:', error);
+   
   }
 };
 
@@ -262,7 +263,7 @@ const handleEnrollClick = async (event) => {
   spinner.style.display = 'inline-block';
 
   try {
-    const response = await fetch(`https://learnx-ldys.onrender.com/course/enrolls/${courseId}/`, {
+    const response = await fetch(`https://learn-x-seven.vercel.app/course/enrolls/${courseId}/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -289,7 +290,7 @@ const handleEnrollClick = async (event) => {
 
     // Reset button and hide spinner
     enrollButton.disabled = false;
-    enrollButton.value = 'ENROLL NOW';
+    enrollButton.value = 'ENROLLED';
     spinner.style.display = 'none';
   }
 };

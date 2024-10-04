@@ -1,7 +1,7 @@
 const loadstudentIdOne = () => {
     const user_id = localStorage.getItem("user_id");
 
-    fetch(`https://learnx-ldys.onrender.com/account/StudentList/?user_id=${user_id}`)
+    fetch(`https://learn-x-seven.vercel.app/account/StudentList/?user_id=${user_id}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -24,7 +24,7 @@ const loadStudentCourses = () => {
     const tableCap = document.getElementById('table_cap');
     const noDataInstructor = document.getElementById("nodata_instructor");
 
-    fetch(`https://learnx-ldys.onrender.com/course/enrollview/${student_id}`)
+    fetch(`https://learn-x-seven.vercel.app/course/enrollview/${student_id}`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {

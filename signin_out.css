@@ -84,7 +84,11 @@
     color:#685F78;
     margin-left: 50%;
 }
-
+@media (max-width: 425px){
+  .signUp {
+    display: none;
+}
+}
 @media (max-width: 576px) {
     .signup-container {
       flex-direction: column;

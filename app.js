@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 const loadDepartments = () => {
-  fetch("https://learnx-ldys.onrender.com/course/department/")
+  fetch("https://learn-x-seven.vercel.app/course/department/")
       .then((res) => res.json())
       .then((data) => {
           departmentData = data;
@@ -24,7 +24,7 @@ const loadDepartments = () => {
 };
 
 const loadInstructors = () => {
-  return fetch("https://learnx-ldys.onrender.com/account/InstructorList/")
+  return fetch("https://learn-x-seven.vercel.app/account/InstructorList/")
       .then((res) => res.json())
       .then((data) => {
           instructorData = data;
@@ -41,8 +41,8 @@ const handleDepartmentClick = (departmentName) => {
 
 const getAllCourses = (departmentName = '') => {
     const url = departmentName 
-                ? `https://learnx-ldys.onrender.com/course/courses/?search=${departmentName}` 
-                : "https://learnx-ldys.onrender.com/course/courses/";
+                ? `https://learn-x-seven.vercel.app/course/courses/?search=${departmentName}` 
+                : "https://learn-x-seven.vercel.app/course/courses/";
   
     fetch(url)
         .then((res) => res.json())

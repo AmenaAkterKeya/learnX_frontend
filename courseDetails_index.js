@@ -7,7 +7,7 @@ let departmentData = [];
 let instructorData = [];
 
 const fetchDepartments = () => {
-  return fetch('https://learnx-ldys.onrender.com/course/department/')
+  return fetch('https://learn-x-seven.vercel.app/course/department/')
     .then(response => response.json())
     .then(data => {
       departmentData = data;
@@ -23,7 +23,7 @@ const fetchDepartments = () => {
 };
 
 const fetchInstructors = () => {
-  return fetch("https://learnx-ldys.onrender.com/account/InstructorList/")
+  return fetch("https://learn-x-seven.vercel.app/account/InstructorList/")
     .then(response => response.json())
     .then(data => {
       instructorData = data;
@@ -37,7 +37,7 @@ const fetchInstructors = () => {
 const getCourseDetail = async () => {
   try {
     const courseId = getQueryParams("id");
-    const response = await fetch(`https://learnx-ldys.onrender.com/course/courses/${courseId}/`);
+    const response = await fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/`);
     if (!response.ok) {
       throw new Error('Failed to fetch course details');
     }
@@ -147,7 +147,7 @@ color:#b5b5b5;
 
 const getCourseComments = async (courseId) => {
   try {
-    const response = await fetch(`https://learnx-ldys.onrender.com/course/courses/${courseId}/comments/`);
+    const response = await fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/comments/`);
     if (!response.ok) {
       throw new Error('Failed to fetch comments');
     }
@@ -201,7 +201,7 @@ document.getElementById('Form').addEventListener('submit', async function(e) {
   };
 
   try {
-    const response = await fetch('https://learnx-ldys.onrender.com/course/comment/', {
+    const response = await fetch('https://learn-x-seven.vercel.app/course/comment/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

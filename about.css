@@ -317,13 +317,13 @@
     }
     .about-section .image-column .inner-column .author-desc {
         left: 70px;
-        width: calc(130% - 152px);
+        width: calc(118% - 152px);
     }   
     .about-section .image-column .inner-column:before {
-        width: calc(60% + 80px);
+        width: calc(60% + 70px);
        
     }
     .aboutt{
-        width: 100%;
+        width: 60%;
     }
   }

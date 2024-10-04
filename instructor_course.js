@@ -1,7 +1,7 @@
 const loadInstructorIdOne = () => {
     const user_id = localStorage.getItem("user_id");
 
-    fetch(`https://learnx-ldys.onrender.com/account/InstructorList/?user_id=${user_id}`)
+    fetch(`https://learn-x-seven.vercel.app/account/InstructorList/?user_id=${user_id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -18,7 +18,7 @@ const loadCourses = () => {
     }
 
     let courseCounter = 1;
-    fetch(`https://learnx-ldys.onrender.com/course/courses/?instructor_id=${instructor_id}`)
+    fetch(`https://learn-x-seven.vercel.app/course/courses/?instructor_id=${instructor_id}`)
         .then((res) => {
             if (!res.ok) {
                 throw new Error(`HTTP error! Status: ${res.status}`);
@@ -73,7 +73,7 @@ const loadCourses = () => {
 
 
 function fetchDepartments() {
-    fetch('https://learnx-ldys.onrender.com/course/department/')
+    fetch('https://learn-x-seven.vercel.app/course/department/')
         .then(response => response.json())
         .then(data => {
             const departmentSelect = document.getElementById('edit-department');
@@ -90,7 +90,7 @@ function fetchDepartments() {
 
 const handleEditButtonClick = (event) => {
     const courseId = event.target.getAttribute("data-id");
-    fetch(`https://learnx-ldys.onrender.com/course/courses/${courseId}/`)
+    fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/`)
       .then(res => res.json())
       .then(data => {
         document.getElementById("edit-title").value = data.title;
@@ -137,7 +137,7 @@ document.getElementById("editCourseForm").addEventListener("submit", (event) => 
             console.log("Image URL:", imageUrl);
             updatedCourse.image = imageUrl; 
 
-            fetch(`https://learnx-ldys.onrender.com/course/courses/${courseId}/`, {
+            fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -160,7 +160,7 @@ document.getElementById("editCourseForm").addEventListener("submit", (event) => 
         });
     } else {
         
-        fetch(`https://learnx-ldys.onrender.com/course/courses/${courseId}/`, {
+        fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -185,7 +185,7 @@ document.getElementById("editCourseForm").addEventListener("submit", (event) => 
 const handleDeleteButtonClick = (event) => {
     const courseId = event.target.getAttribute("data-id");
     const tab = document.getElementById("table_cap");
-    fetch(`https://learnx-ldys.onrender.com/course/courses/${courseId}/`, {
+    fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/`, {
         method: "DELETE",
     }).then(() => {
         loadCourses();

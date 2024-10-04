@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function fetchDepartments() {
-    fetch('https://learnx-ldys.onrender.com/course/department/')
+    fetch('https://learn-x-seven.vercel.app/course/department/')
         .then(response => response.json())
         .then(data => {
             const departmentSelect = document.getElementById('department');
@@ -65,7 +65,7 @@ const handleCourse = (event) => {
 
         console.log(JSON.stringify(courseData));
 
-        return fetch("https://learnx-ldys.onrender.com/course/courses/", {
+        return fetch("https://learn-x-seven.vercel.app/course/courses/", {
             method: "POST",
             headers: {
                 "Authorization": `Token ${token}`,
