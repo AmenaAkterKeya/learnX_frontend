@@ -72,7 +72,7 @@ const getAllCourses = (departmentName = '') => {
                           <img src="${course.image}" class="card-img-top" alt="...">
                           <div class="card-body">
                               <h4 class="card-title"><a href="./index_course_details.html?id=${course.id}" class="enroll_btn">${course.title.slice(0, 20)}..</a></h4>
-                              <p class="card-text" style="font-size: 18px;">${course.content.slice(0,35)}...</p>
+                              <p class="card-text" style="font-size: 18px;">${course.content.slice(0,30)}...</p>
                               <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 25px;">
                                   <p class="lesson"><i class="fa-regular fa-clock clock"></i><span class="card_icon">${course.lesson} Lessons</span></p>
                                   <p class="lesson"><i class="fa-regular fa-user clock"></i><span class="card_icon">${instructorName}</span></p>

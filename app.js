@@ -81,7 +81,7 @@ const getAllCourses = (departmentName = '') => {
     
   <p class="card-text " style="
     font-size: 18px;
-">${course.content.slice(0,35)}...</p>
+">${course.content.slice(0,30)}...</p>
     
                                 <div style="
     display: flex;
