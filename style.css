@@ -547,10 +547,9 @@ margin-right: auto;
 .banner_content{
   text-align: center;
 }
-  .banner_right img {
-    width: 60% !important;
-      margin-left: 0;
-  }
+.banner_right img {
+  min-height: 250px !important;
+}
 
   .event-container {
       padding: 25px;
@@ -593,7 +592,9 @@ margin-right: auto;
   .navbar-brand {
       margin-left: 10px;
   }
-
+  .banner_right img {
+    min-height: 250px !important;
+  }
   .banner_left h1 {
     font-size: 36px;
 }
@@ -648,6 +649,9 @@ margin-right: auto;
   }
   .en {
     font-size: 20px;
+}
+.banner_right img {
+  min-height: 250px !important;
 }
 .bio{
   width: 320px;
