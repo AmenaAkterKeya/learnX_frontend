@@ -82,7 +82,7 @@
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/username/workio..git
+   git clone https://github.com/username/learnX_frontend.git
    cd learnX_frontend
    
 2. **Open the Project**:
