@@ -34,7 +34,7 @@
 - **Instructor Role**:
   - **Course Management**: Instructors can upload their courses, edit course details, and delete courses they no longer wish to offer.
   - **Dashboard Access**: Instructors have a dashboard to view their courses, manage enrollments, and access their profile information.
-  - 
+    
 ### Course Management
 - **Course Catalog**: Browse a diverse range of courses across various subjects.
 - **Category Search**: Users can filter courses based on categories for easier navigation.
