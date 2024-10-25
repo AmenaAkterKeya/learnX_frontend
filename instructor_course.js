@@ -6,194 +6,168 @@ const loadInstructorIdOne = () => {
       .then((data) => {
         console.log(data);
         localStorage.setItem("instructor_id", data[0].id);
-        loadCourses(); 
+        
       });
 };
 
-const loadCourses = () => {
+document.addEventListener("DOMContentLoaded", function() {
+   
     const instructor_id = localStorage.getItem("instructor_id");
-    if (!instructor_id) {
-        console.error("Instructor ID not found in localStorage.");
-        return;
-    }
+    const apiUrl = `https://learn-x-seven.vercel.app/account/InstructorList/${instructor_id}`;
 
-    let courseCounter = 1;
-    fetch(`https://learn-x-seven.vercel.app/course/courses/?instructor_id=${instructor_id}`)
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
-            }
-            return res.json();
-        })
-        .then((data) => {
-            console.log("Courses data:", data);
-            const parent = document.getElementById("table-body");
-            const tab = document.getElementById("table_cap");
-            const noDataInstructor = document.getElementById("nodata_instructor");
-
-            if (data.length === 0) {
-                    noDataInstructor.style.display = "flex";
-                    noDataInstructor.style.justifyContent = "center";
-                    tab.style.display = "none";  
-                    parent.innerHTML = ''; 
-            } else {
-
-                    noDataInstructor.style.display = "none";  
- 
-                tab.style.display = "contents"; 
-                parent.innerHTML = ''; 
-                data.forEach((item) => {
-                    const tr = document.createElement("tr");
-                    tr.innerHTML = `
-                        <td>${courseCounter++}</td>
-                        <td><a href="./course_detail.html?id=${item.id}" style="text-decoration: none; color: #f66962; font-size: 18px;">${item.title}</a></td>
-                        <td>${item.lesson}</td>
-                        <td>${item.fee}</td>
-                        <td>
-                            <button type="button" class="btn btn-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="${item.id}" style="background-color: #f66962; border:none;"><i class="fa-solid fa-pen-to-square" data-id="${item.id}"></i></button>
-                            <button class="btn btn-danger delete-btn" data-id="${item.id}" style="background-color: #685F78; border:none;margin-left: 8px;"><i class="fa-solid fa-trash delete-btn" data-id="${item.id}"></i></button>
-                        </td>
-                    `;
-                    parent.appendChild(tr);
-                });
-
-                document.querySelectorAll(".edit-btn").forEach(button => {
-                    button.addEventListener("click", handleEditButtonClick);
-                });
-
-                document.querySelectorAll(".delete-btn").forEach(button => {
-                    button.addEventListener("click", handleDeleteButtonClick);
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching courses:', error);
-        });
-};
-
-
-function fetchDepartments() {
-    fetch('https://learn-x-seven.vercel.app/course/department/')
-        .then(response => response.json())
-        .then(data => {
-            const departmentSelect = document.getElementById('edit-department');
-            data.forEach(department => {
-                const option = document.createElement('option');
-                option.value = department.id;
-                option.text = department.name;
-                departmentSelect.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Error fetching departments:', error));
-}
-
-
-const handleEditButtonClick = (event) => {
-    const courseId = event.target.getAttribute("data-id");
-    fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/`)
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("edit-title").value = data.title;
-        document.getElementById("edit-content").value = data.content;
-        document.getElementById("edit-lesson").value = data.lesson;
-        document.getElementById("edit-fee").value = data.fee;
-        document.getElementById("edit-department").value = data.department; 
-        document.getElementById("editCourseForm").setAttribute("data-id", courseId);
-      });
-};
-
-
-document.getElementById("editCourseForm").addEventListener("submit", (event) => {
-    event.preventDefault();
-    const courseId = event.target.getAttribute("data-id");
-    const updatedCourse = {
-        title: document.getElementById("edit-title").value,
-        content: document.getElementById("edit-content").value,
-        lesson: document.getElementById("edit-lesson").value,
-        fee: document.getElementById("edit-fee").value,
-        department: [document.getElementById("edit-department").value],
-
-    };
-
-    const imageFile = document.getElementById("edit-image").files[0]; 
-    if (imageFile) {
-        // Upload image to imgBB
-        const imgbbApiKey = "830c9f2bc90e1ac3e4c2d15fb60628d2";
-        const imgbbFormData = new FormData();
-        imgbbFormData.append("image", imageFile);
-
-        fetch(`https://api.imgbb.com/1/upload?key=${imgbbApiKey}`, {
-            method: "POST",
-            body: imgbbFormData,
-        })
-        .then((response) => {
+    fetch(apiUrl)
+        .then(response => {
+           
             if (!response.ok) {
-                throw new Error('Image upload failed');
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.json();
         })
-        .then((imgbbData) => {
-            const imageUrl = imgbbData.data.url;
-            console.log("Image URL:", imageUrl);
-            updatedCourse.image = imageUrl; 
+        .then(data => {
+           
+            if (data.user && data.user.first_name && data.user.last_name) {
+                document.getElementById("student-name").textContent = `${data.user.first_name} ${data.user.last_name}`;
+            } else {
+                console.error("Data does not contain 'first_name' or 'last_name'");
+            }
+        })
+        .catch(error => console.error("Error fetching student data:", error));
+});
 
-            fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(updatedCourse),
-            })
-            .then(response => response.json())
-            .then(updatedData => {
-                console.log("Updated Course Data:", updatedData); 
-                loadCourses();
-                document.querySelector("#editModal .btn-close").click(); 
-                window.location.href = "profile.html"; 
-            })
-            .catch((error) => {
-                console.error('Error updating course:', error);
-            });
-        })
-        .catch((error) => {
-            console.error('Image upload error:', error);
-        });
-    } else {
-        
-        fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updatedCourse),
-        })
-        .then(response => response.json())
-        .then(updatedData => {
-            // console.log("Updated Course Data:", updatedData); 
-            loadCourses();
-            document.querySelector("#editModal .btn-close").click(); 
-            window.location.href = "profile.html"; 
-        })
-        .catch((error) => {
-            console.error('Error updating course:', error);
-        });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const instructor_id = localStorage.getItem("instructor_id");
+    const apiUrl = `https://learn-x-seven.vercel.app/course/courses/${instructor_id}`;
+    if (!instructor_id) {
+        console.error('No student ID found in local storage.');
+        document.getElementById("total-deposit").textContent = 'No ID';
+        document.getElementById("total-purchase").textContent = 'No ID';
+       
+        return; 
     }
+
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            
+            document.getElementById("total-deposit").textContent = `${data.total_enrollments || 0}`;
+            document.getElementById("total-purchase").textContent = `$${data.total_amount || 0}`;
+           
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            
+            document.getElementById("total-deposit").textContent = 'Error';
+            document.getElementById("total-purchase").textContent = 'Error';
+          
+        });
+});
+
+async function fetchCourses() {
+    const instructor_id = localStorage.getItem("instructor_id");
+    const url = `https://learn-x-seven.vercel.app/course/courses/?instructor_id=${instructor_id}`; // Change instructorId to instructor_id
+    
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Network response was not ok');
+
+        const data = await response.json();
+
+        const courseTableBody = document.getElementById('course-table-body');
+        courseTableBody.innerHTML = ''; 
+
+        data.forEach((course, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="text-center">${index + 1}</td>
+                <td> <a href="./course_detail.html?id=${course.id}" style="text-decoration: none; color: #f66962; font-size: 18px;">${course.title}</a></td>
+                <td class="text-center">${course.fee}</td>
+                <td class="text-center">${course.lesson}</td>
+                <td class="text-center">${course.total_enrollments}</td>
+                <td class="text-center">
+                     <a href="./course_detail.html?id=${course.id}" type="button" class="btn btn-primary btn-sm">Details</a>
+                </td>
+            `;
+            courseTableBody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error fetching courses:', error);
+    }
+}
+document.addEventListener("DOMContentLoaded", function() { 
+    const instructor_id = localStorage.getItem("instructor_id");
+    const url = `https://learn-x-seven.vercel.app/course/courses/?instructor_id=${instructor_id}`;
+    const ctx = document.getElementById('chColumn').getContext('2d'); // Match the canvas ID here
+    const loadingMessage = document.getElementById('loading-message');
+
+    // Check if instructor_id exists
+    if (!instructor_id) {
+        console.error('No instructor ID found in local storage.');
+        return;
+    }
+
+    fetch(url) // Use the correct URL
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data); // Log the API response for debugging
+            const totalDepositAmount = data.total_deposit_amount || 0;
+            const totalCourseFee = data.course_fee || 0; // Adjusted to fetch course_fee
+
+            // Hide loading message if it exists
+            if (loadingMessage) {
+                loadingMessage.style.display = 'none';
+            }
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Total Deposit Amount', 'Total Course Fee'],
+                    datasets: [{
+                        label: 'Amount ($)',
+                        data: [1000, 500], // Static values for testing
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 99, 132, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 99, 132, 1)'
+                        ],
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                }
+            });
+            
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            if (loadingMessage) {
+                loadingMessage.innerHTML = 'Error loading chart data';
+            }
+        });
 });
 
 
 
-const handleDeleteButtonClick = (event) => {
-    const courseId = event.target.getAttribute("data-id");
-    const tab = document.getElementById("table_cap");
-    fetch(`https://learn-x-seven.vercel.app/course/courses/${courseId}/`, {
-        method: "DELETE",
-    }).then(() => {
-        loadCourses();
-    });
-};
 
-
-
-
+document.addEventListener('DOMContentLoaded', fetchCourses);
 loadInstructorIdOne();
-fetchDepartments();

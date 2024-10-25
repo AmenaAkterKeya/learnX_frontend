@@ -36,7 +36,12 @@
     max-width: 1170px;
 }
  .detail_image{
-    max-width: 80%;
+    max-width: 70%;
+    width: 50%;
+ }
+ .detail_images{
+  width: 100%;
+
  }
  .pay{
     width: 100%;
@@ -85,7 +90,7 @@
 }
 .text_card{
     text-align: justify;
-    max-width: 56%;
+    max-width: 85%;
     font-size: 17px;
     margin-top: 12px;
     font-weight: 300;
