@@ -9,7 +9,7 @@
 - **Course Catalog**: Browse a diverse range of courses across various subjects.
 - **User Authentication**: Secure registration and login for users.
 - **Course Enrollment**: Easily enroll in courses of your choice.
-- **Roles: 
+- **Roles**: 
    - **Student**: View and manage enrolled courses, deposit funds, and access a personal dashboard.
    - **Instructor**: Upload, edit, and delete courses while managing student enrollments.
 
