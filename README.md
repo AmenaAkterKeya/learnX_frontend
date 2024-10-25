@@ -10,8 +10,8 @@
 - **User Authentication**: Secure registration and login for users.
 - **Course Enrollment**: Easily enroll in courses of your choice.
 - **Roles: 
-- **Student**: View and manage enrolled courses, deposit funds, and access a personal dashboard.
-- **Instructor**: Upload, edit, and delete courses while managing student enrollments.
+   - **Student**: View and manage enrolled courses, deposit funds, and access a personal dashboard.
+   - **Instructor**: Upload, edit, and delete courses while managing student enrollments.
 
 - **Responsive Design**: Optimized for seamless use on all devices, including desktops, tablets, and smartphones.
 
