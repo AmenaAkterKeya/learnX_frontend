@@ -1,49 +1,45 @@
-const addDeposit = (event) => {
-    event.preventDefault(); 
+document.getElementById('depositForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-    const depositAmount = parseFloat(document.getElementById('deposit-amount').value); // Retrieve and parse deposit amount
+    const amount = document.getElementById('amount').value;
     const token = localStorage.getItem("token");
 
-
-    if (isNaN(depositAmount) || depositAmount < 200) {
-        document.getElementById('error').textContent = 'Your deposit must be $200 or more.';
-        document.getElementById('error').style.display = 'block'; 
+    // Validate minimum amount
+    if (amount < 200) {
+        alert("Please enter an amount of at least 200 BDT.");
         return;
     }
 
-    console.log("Token:", token);
-    console.log("Deposit Amount:", depositAmount); 
-    const addAmountUrl = "https://learn-x-seven.vercel.app/course/balance/";
+    try {
+        const response = await fetch('https://learn-x-seven.vercel.app/course/deposit/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${token}`, 
+            },
+            body: JSON.stringify({ amount })
+        });
 
-    fetch(addAmountUrl, {
-        method: "POST",
-        headers: {
-            "Authorization": `Token ${token}`,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ amount: depositAmount }), 
-    })
-    .then(response => {
+        const data = await response.json();
+        
+        // Check if response is OK
         if (!response.ok) {
-            return response.json().then(data => {
-                throw new Error(data.error);
-            });
+            throw new Error(data.error || 'Failed to initiate payment.'); 
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Deposit successful:', data);
-        window.location.href = "student_profile.html"
-        getUpdatedBalance();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('error').textContent = error.message; 
-        document.getElementById('error').style.display = 'block'; 
-    });
-};
 
-// Function to fetch and display the updated balance
+        // Redirect to the payment URL
+        if (data.url) {
+            window.location.href = data.url; 
+        } else {
+            alert('Payment URL not received.');
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to initiate payment. Please try again.');  
+    }
+});
+
 const getUpdatedBalance = () => {
     const balanceViewUrl = 'https://learn-x-seven.vercel.app/course/balanceview/';
     const token = localStorage.getItem("token");
@@ -69,11 +65,14 @@ const getUpdatedBalance = () => {
     })
     .catch(error => {
         console.error('Error:', error);
-        document.getElementById('error').textContent = error.message; 
-        document.getElementById('error').style.display = 'block'; 
+        const errorElement = document.getElementById('error');
+        errorElement.textContent = error.message; 
+        errorElement.style.display = 'block'; 
     });
 };
 
 document.addEventListener('DOMContentLoaded', () => {
     getUpdatedBalance();
 });
+
+

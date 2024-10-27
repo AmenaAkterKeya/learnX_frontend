@@ -123,7 +123,21 @@ label input {
 .label{
   margin-bottom: 15px;
 }
+.trans{
+ 
+}
+.trans a{
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+      padding: 4px !important;
+border-radius: 5px !important;
 
+cursor: pointer;
+  text-decoration: none;
+  background-color: #f66962;
+color: white;
+}
 
 /* Responsive styling */
 @media (max-width: 1200px) {

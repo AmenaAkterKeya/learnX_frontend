@@ -72,5 +72,57 @@ const loadStudentCourses = () => {
         });
 };
 
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const token = localStorage.getItem("token");
+        const response = await fetch('https://learn-x-seven.vercel.app/course/balance/', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Token ${token}`,
+            }
+        });
 
+        // Check if the response is OK
+        if (!response.ok) {
+            throw new Error('Failed to fetch data.');
+        }
+
+        const data = await response.json();
+        const deposits = data.deposits; // Assuming your API response has a 'deposits' field
+        const tableBody = document.getElementById('table-body');
+        const tableCap = document.getElementById('table_cap');
+        const noDataDiv = document.getElementById('nodata_instructor');
+
+        // If there are deposits, populate the table
+        if (deposits.length > 0) {
+            tableCap.style.display = ''; // Show table header
+            deposits.forEach(deposit => {
+                const row = document.createElement('tr');
+                row.style.fontSize = "20px";
+
+                // Create table cells for ID, Amount, and Time
+                const idCell = document.createElement('td');
+                idCell.textContent = deposit.id; // Replace with actual ID if available
+                row.appendChild(idCell);
+
+                const amountCell = document.createElement('td');
+                amountCell.textContent = deposit.amount; // Amount from your API
+                row.appendChild(amountCell);
+
+                const timeCell = document.createElement('td');
+                timeCell.textContent = deposit.created_on; // Formatted date from your API
+                row.appendChild(timeCell);
+
+                tableBody.appendChild(row);
+            });
+        } else {
+           
+            tableCap.style.display = 'none';
+            noDataDiv.style.display = 'block'; 
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Payment doesnot successful');
+    }
+});
 loadstudentIdOne()
