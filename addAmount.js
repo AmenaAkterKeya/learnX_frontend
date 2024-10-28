@@ -1,45 +1,49 @@
-document.getElementById('depositForm').addEventListener('submit', async (event) => {
-    event.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const depositForm = document.getElementById('depositForm');
 
-    const amount = document.getElementById('amount').value;
-    const token = localStorage.getItem("token");
-
-    // Validate minimum amount
-    if (amount < 200) {
-        alert("Please enter an amount of at least 200 BDT.");
+    if (!depositForm) {
+        
         return;
     }
 
-    try {
-        const response = await fetch('https://learn-x-seven.vercel.app/course/deposit/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Token ${token}`, 
-            },
-            body: JSON.stringify({ amount })
-        });
+    depositForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-        const data = await response.json();
-        
-        // Check if response is OK
-        if (!response.ok) {
-            throw new Error(data.error || 'Failed to initiate payment.'); 
+        const amount = document.getElementById('amount').value;
+        const token = localStorage.getItem("token");
+
+        if (amount < 200) {
+            alert("Please enter an amount of at least 200 BDT.");
+            return;
         }
 
-        // Redirect to the payment URL
-        if (data.url) {
-            window.location.href = data.url; 
-        } else {
-            alert('Payment URL not received.');
+        try {
+            const response = await fetch('https://learn-x-seven.vercel.app/course/deposit/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`,
+                },
+                body: JSON.stringify({ amount })
+            });
+
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || 'Failed to initiate payment.');
+
+            if (data.url) {
+                window.location.href = data.url;
+            } else {
+                alert('Payment URL not received.');
+            }
+
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to initiate payment. Please try again.');
         }
-        
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Failed to initiate payment. Please try again.');  
-    }
+    });
+
+    getUpdatedBalance();
 });
-
 const getUpdatedBalance = () => {
     const balanceViewUrl = 'https://learn-x-seven.vercel.app/course/balance/';
     const token = localStorage.getItem("token");
