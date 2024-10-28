@@ -41,7 +41,7 @@ document.getElementById('depositForm').addEventListener('submit', async (event) 
 });
 
 const getUpdatedBalance = () => {
-    const balanceViewUrl = 'https://learn-x-seven.vercel.app/course/balanceview/';
+    const balanceViewUrl = 'https://learn-x-seven.vercel.app/course/balance/';
     const token = localStorage.getItem("token");
 
     fetch(balanceViewUrl, {
