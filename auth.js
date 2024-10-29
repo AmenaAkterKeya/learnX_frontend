@@ -54,51 +54,47 @@ const getValue = (id) => {
     const value = document.getElementById(id).value;
     return value;
 };
-const handleLogin = (event) => {
+const handleLogin = (event) => { 
   event.preventDefault();
-  const username = getValue("login-username");
-  const password = getValue("login-password");
-
+  const username = document.getElementById("login-username").value;
+  const password = document.getElementById("login-password").value;
 
   const preloader = document.getElementById("preloader");
-
   const errorElement = document.getElementById("error");
   errorElement.style.display = "none";
 
   if (username && password) {
-    
       preloader.style.display = "flex";
-    
-      fetch("https://learn-x-seven.vercel.app/account/login/", {
+
+      fetch("http://127.0.0.1:8000/account/login/", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ username, password }),
       })
-          .then((res) => res.json())
-          .then((data) => {
-              preloader.style.display = "none";
+      .then((res) => res.json())
+      .then((data) => {
+          preloader.style.display = "none";
 
-              if (data.token && data.user_id) {
-                  localStorage.setItem("token", data.token);
-                  localStorage.setItem("user_id", data.user_id);
-                  if (data.role.toLowerCase() === "student") {
-                    window.location.href = "student_profile.html";
-                } else {
-                    window.location.href = "profile.html";
-                }
-              } else {
-                  errorElement.innerText = "Email not confirmed. Please confirm your email.";
-                  errorElement.style.display = "block";
-              }
-          })
-          .catch((error) => {
-              preloader.style.display = "none";
-              console.error("Login Error:", error);
-              errorElement.innerText = "Something went wrong. Please try again.";
+          if (data.error) {
+              errorElement.innerText = data.error; // Show the error message
               errorElement.style.display = "block";
-          });
+              return; // Exit if there’s an error
+          }
+
+          if (data.token && data.user_id) {
+              localStorage.setItem("token", data.token);
+              localStorage.setItem("user_id", data.user_id);
+              window.location.href = data.role.toLowerCase() === "student" ? "student_profile.html" : "profile.html";
+          }
+      })
+      .catch((error) => {
+          preloader.style.display = "none";
+          errorElement.innerText = "Something went wrong. Please try again.";
+          errorElement.style.display = "block";
+      });
   }
 };
+
  
 
 
