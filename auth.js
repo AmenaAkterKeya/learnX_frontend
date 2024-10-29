@@ -66,7 +66,7 @@ const handleLogin = (event) => {
   if (username && password) {
       preloader.style.display = "flex";
 
-      fetch("http://127.0.0.1:8000/account/login/", {
+      fetch("https://learn-x-seven.vercel.app/account/login/", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ username, password }),
