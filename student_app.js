@@ -41,8 +41,8 @@ const handleDepartmentClick = (departmentName) => {
 
 const getAllCourses = (departmentName = '') => {
     const url = departmentName 
-                ? `https://learn-x-seven.vercel.app/course/courses/?search=${departmentName}` 
-                : "https://learn-x-seven.vercel.app/course/courses/";
+              ? `https://learn-x-seven.vercel.app/course/courses/?search=${departmentName}` 
+              : "https://learn-x-seven.vercel.app/course/courses/";
   
     fetch(url)
         .then((res) => res.json())

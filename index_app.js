@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 const loadDepartments = () => {
-  fetch("https://learn-x-seven.vercel.app/course/department/")
+  fetch("https://learn-x-seven.vercel.app/course/department")
       .then((res) => res.json())
       .then((data) => {
           departmentData = data;
@@ -24,7 +24,7 @@ const loadDepartments = () => {
 };
 
 const loadInstructors = () => {
-  return fetch("https://learn-x-seven.vercel.app/account/InstructorList/")
+  return fetch("https://learn-x-seven.vercel.app/account/InstructorList")
       .then((res) => res.json())
       .then((data) => {
           instructorData = data;
@@ -37,23 +37,23 @@ const loadInstructors = () => {
 };
 
 const getAllCourses = (departmentName = '') => {
-  const url = departmentName 
-              ? `https://learn-x-seven.vercel.app/course/courses/?search=${departmentName}` 
-              : "https://learn-x-seven.vercel.app/course/courses/";
+    const url = departmentName 
+    ? `https://learn-x-seven.vercel.app/course/courses/?search=${departmentName}` 
+    : "https://learn-x-seven.vercel.app/course/courses/";
 
   fetch(url)
       .then((res) => res.json())
       .then((courses) => {
           const coursesContainer = document.getElementById("courses-row");
           const noCoursesMessage = document.getElementById("no-courses-message");
-          coursesContainer.innerHTML = ""; // Clear previous courses
+          coursesContainer.innerHTML = ""; 
           
           if (courses.length === 0) {
               console.log("No courses found.");
-              noCoursesMessage.style.display = "block"; // Show no courses message
+              noCoursesMessage.style.display = "block"; 
           } else {
               noCoursesMessage.style.display = "none";
-              const displayedCourses = courses.slice(0, 6); // Limit to 6 courses
+              const displayedCourses = courses.slice(0, 6); 
 
               displayedCourses.forEach((course) => {
                   const departmentNames = course.department.map(deptId => {
