@@ -79,6 +79,19 @@
 }    
 .content_in{
     text-align: center;
+    border: 1px solid #c1c0c0;
+    padding: 10px;
+    width: 350px;
+    margin-bottom: 20px;
+}
+.content_in:hover{
+  text-align: center;
+  border: 1px solid #c1c0c0;
+  padding: 10px;
+ 
+}
+.content_ins{
+  text-align: center;
 }
 .back_home{
     color:#685F78;

@@ -48,8 +48,23 @@
           </div>
           <div class="input_field">
               <button type="submit" onclick="handleLogin(event)" class="submit-btn">Login</button>
-              <p class="content_in">Student name: queen <br>Student password: le@rnx12 <br> Instructor name: rose <br> Instructor password: @123456a </p>
-              <p class="content_in">New User? <a href="registration.html">Create an Account</a></p>
+              <!-- <p class="content_in">Student name: queen <br>Student password: le@rnx12 <br> Instructor name: rose <br> Instructor password: @123456a </p> -->
+              <p class="content_ins" style="font-weight: 500; font-size:18px;margin-top: -30px;">Credentials</p>
+              <div class="row text-center">
+                <div class="col-md-6">
+                  <button class="content_in btn" type="button" onclick="fillCredentials()">
+                    Student name: queen <br>
+                    Student password: le@rnx12
+                </button>
+                </div>
+                <div class="col-md-6">
+                  <button class="content_in btn" type="button" onclick="fillsCredentials()">
+                    Instructor name: rose <br>
+                    Instructor password: @123456a
+                </button>
+                </div>
+              </div>
+              <p class="content_ins">New User? <a href="registration.html">Create an Account</a></p>
           </div>
       </form>
     

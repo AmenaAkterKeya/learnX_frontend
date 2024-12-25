@@ -54,6 +54,7 @@ const getValue = (id) => {
     const value = document.getElementById(id).value;
     return value;
 };
+
 const handleLogin = (event) => { 
   event.preventDefault();
   const username = document.getElementById("login-username").value;
@@ -95,8 +96,15 @@ const handleLogin = (event) => {
   }
 };
 
+function fillCredentials() {
+  document.getElementById('login-username').value = 'queen';
+  document.getElementById('login-password').value = 'le@rnx12';
+}
 
- 
+function fillsCredentials() {
+  document.getElementById('login-username').value = 'rose';
+  document.getElementById('login-password').value = '@123456a';
+}
 
 
   const handlelogOut = () => {
