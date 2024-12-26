@@ -81,8 +81,13 @@
     text-align: center;
     border: 1px solid #c1c0c0;
     padding: 10px;
-    width: 350px;
     margin-bottom: 20px;
+}
+.content_inss{
+  font-weight: 500; 
+  font-size:18px;
+  margin-top: -30px;
+  text-align: center;
 }
 .content_in:hover{
   text-align: center;
@@ -100,6 +105,9 @@
 @media (max-width: 425px){
   .signUp {
     display: none;
+}
+.content_inss{
+  margin-top: 0px;
 }
 }
 @media (max-width: 576px) {
